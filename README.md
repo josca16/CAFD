@@ -110,43 +110,11 @@ bash ./drupal-installer.sh
 | 8      | Mostrar chuleta Docker básica|
 | 0      | Salir del script|
 
-🧠 Desarrollado como herramienta de mejora de procesos en entorno de prácticas. Su objetivo es facilitar el trabajo del equipo y evitar configuraciones manuales repetitivas.
-
-### 🤝 Agradecimientos
-
-Esta herramienta no habría sido posible sin la excelente estructura previa diseñada por el equipo de desarrollo. En especial, gracias a la decisión técnica de implementar archivos `.install` dentro de los módulos personalizados, que permiten:
-
-1. Configurar automáticamente el contenido y estructura de cada página.
-2. Eliminar todo el contenido por defecto de drupal.
-3. Asignar bloques y vistas a sus regiones correspondientes.
-4. Automatizar el despliegue visual y funcional sin intervención manual.
-
-Gracias a esta base bien pensada, fue posible construir una herramienta flexible y funcional que facilita aún más el desarrollo y mantenimiento del entorno Drupal.
+🧠 Desarrollado como herramienta de mejora de procesos durante el desarrollo del proyecto. Su objetivo es facilitar el trabajo y evitar configuraciones manuales repetitivas.
 
 
 
-# 👥 Equipo de Trabajo Beatle
 
-## BACKEND
-| Nombre                | Rol              |
-|-----------------------|------------------|
-| Sergio Méndez Soler   | Líder            |
-| Adam MY               |                  |
-| Alberto Linero Reyes  |                  |
-| Víctor Moreno Cabello |                  |
-| Sara Martagón Beltrán |                  |
-| Salva Martínez        |                  |
-| Israel Pantoja        |                  |
-
-## FRONTEND
-| Nombre                 | Rol              |
-|------------------------|------------------|
-| Antonio R Paredes      | Líder            |
-| Miguel Lara            |                  |
-| Manuel Pacheco Montero |                  |
-| Gonzalo Pineda         |                  |
-| José Carlos Membrive   |                  |
-| José Fernando Nieto    |                  |
 
 
 # 📖 Entendiendo el Funcionamiento del Proyecto
