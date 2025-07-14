@@ -1,0 +1,233 @@
+<?php
+
+use Drupal\Core\Database\Database;
+use Drupal\file\Entity\File;
+use Drupal\Core\File\FileSystemInterface;
+
+/**
+ * Implementa hook_schema().
+ * Define la estructura de la tabla personalizada 'federaciones'.
+ */
+function cafd_federaciones_schema() {
+  $schema['federaciones'] = [
+    'description' => 'Tabla que almacena datos de federaciones deportivas.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'ID de la federación.',
+      ],
+      'nombre' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Nombre de la federación.',
+      ],
+      'direccion' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Dirección de la federación.',
+      ],
+        'telefono' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Teléfono de contacto de la federación.',
+      ],
+        'email' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Correo electrónico de la federación.',
+      ],
+        'weburl' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Página Web de la federación.',
+      ],
+      'logo_fid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'description' => 'ID del archivo del logo subido.',
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implementa hook_install().
+ */
+function cafd_federaciones_install() {
+  // Verifica si existe la tabla federaciones
+  if (\Drupal::database()->schema()->tableExists('federaciones')) {
+    _cafd_federaciones_insert_federaciones();
+  }
+
+  // Colocar el bloque de lista de federaciones en la página de federaciones
+  $block_storage = \Drupal::entityTypeManager()->getStorage('block');
+  
+  // Verificar si el bloque ya existe
+  $existing_blocks = $block_storage->loadByProperties([
+    'plugin' => 'federacion_list_block',
+    'theme' => \Drupal::config('system.theme')->get('default'),
+  ]);
+
+  // Si no existe, crear el bloque
+  if (empty($existing_blocks)) {
+    $block = $block_storage->create([
+      'id' => 'federaciones_list_block',
+      'plugin' => 'federacion_list_block',
+      'region' => 'content',
+      'weight' => 0,
+      'theme' => \Drupal::config('system.theme')->get('default'),
+      'visibility' => [
+        'request_path' => [
+          'id' => 'request_path',
+          'pages' => "/federaciones\n/federaciones/*",
+          'negate' => FALSE,
+        ],
+      ],
+      'settings' => [
+        'label' => 'Listado de Federaciones',
+        'label_display' => 0,
+      ],
+    ]);
+
+    try {
+      $block->save();
+    } catch (\Exception $e) {
+      \Drupal::logger('cafd_federaciones')->error('Error al crear el bloque: @message', ['@message' => $e->getMessage()]);
+    }
+  }
+}
+
+/**
+ * Inserta datos demo en la tabla federaciones.
+ */
+function _cafd_federaciones_insert_federaciones() {
+  $federaciones = [
+    [
+      'nombre' => 'ACTIVIDADES SUBACUÁTICAS',
+      'direccion' => 'C/ Francisco García Góngora, 17 - 04006 - Almería',
+      'telefono' => '950278824',
+      'email' => 'fa-as@live.com',
+      'weburl' => 'https://faas.com.es/',
+    ],
+    [
+      'nombre' => 'AJEDREZ',
+      'direccion' => 'Estadio de la Cartuja, Puerta F. Sevilla, 41092',
+      'telefono' => '623033989',
+      'email' => 'fada@fadajedrez.com',
+      'weburl' => 'https://fadajedrez.com/wp/',
+    ],
+    [
+      'nombre' => 'ATLETISMO',
+      'direccion' => 'Aristófanes 4, 1ºDcha, local 5. Málaga 29010',
+      'telefono' => '951930248',
+      'email' => 'faa@atletismofaa.es',
+      'weburl' => 'https://www.fedatletismoandaluz.net/',
+    ],
+    [
+      'nombre' => 'AUTOMOVILISMO',
+      'direccion' => 'Santo Domingo, nº 22 Local 1 Jerez de la Frontera 11402 Cádiz',
+      'telefono' => '956 038 586',
+      'email' => 'faa@faa.net',
+      'weburl' => 'https://www.faa.net/',
+    ],
+    [
+      'nombre' => 'BADMINTON',
+      'direccion' => 'Las Hermandades, 4 Local, Huelva 21006',
+      'telefono' => '959285847',
+      'email' => 'secretaria@badmintonandalucia.es',
+      'weburl' => 'https://www.badmintonandalucia.es/',
+    ],
+    [
+      'nombre' => 'BALONCESTO',
+      'direccion' => 'Avenida de Guerrita nº 31 local 5, 14005 Córdoba',
+      'telefono' => '957456706',
+      'email' => 'fab@baloncestoandalucia.org',
+      'weburl' => 'https://www.andaluzabaloncesto.org/es/',
+    ],
+    [
+      'nombre' => 'BALONMANO',
+      'direccion' => 'Calle Santa Paula, nº 23 18001 GRANADA',
+      'telefono' => '958 276 432 / 958 276 458',
+      'email' => 'fandaluzabm@fandaluzabm.org',
+      'weburl' => 'https://fandaluzabm.org/',
+    ],
+    [
+      'nombre' => 'BEISBOL Y SÓFBOL',
+      'direccion' => 'C/Huelva s/n Escuela Taller. Benamejí 14910 Córdoba',
+      'telefono' => '669662055/623490284',
+      'email' => 'secretaria@fabs.es',
+      'weburl' => 'https://fabs.es/',
+    ],
+    [
+      'nombre' => 'BILLAR',
+      'direccion' => 'Calle Benidorm, n. 5, Planta Baja Módulo13, 41001 Sevilla',
+      'telefono' => '662 051 622',
+      'email' => 'secretaria@fab.es',
+      'weburl' => 'https://fab.es/',
+    ],
+  ];
+  $logos_path = DRUPAL_ROOT . '/modules/custom/cafd_federaciones/logos/';
+  $connection = \Drupal::database();
+  $file_system = \Drupal::service('file_system');
+  // Asegurarse de que el directorio de archivos públicos existe y tiene permisos correctos
+  $directory = 'public://';
+  $file_system->prepareDirectory($directory, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS);
+  // Crear el directorio para los logos con permisos adecuados
+  $logos_directory = 'public://federaciones/logos';
+  $file_system->prepareDirectory($logos_directory, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS);
+  foreach ($federaciones as &$federacion) {
+    // Generar el nombre del archivo de logo a partir del nombre de la federación
+    $filename = strtolower($federacion['nombre']);
+    $filename = str_replace(
+      [' ', 'á', 'é', 'í', 'ó', 'ú', 'ñ', 'ü', 'Á', 'É', 'Í', 'Ó', 'Ú', 'Ñ', 'Ü'],
+      ['_', 'a', 'e', 'i', 'o', 'u', 'n', 'u', 'a', 'e', 'i', 'o', 'u', 'n', 'u'],
+      $filename
+    );
+    $filename .= '.png';
+    $file_path = $logos_path . $filename;
+    if (file_exists($file_path)) {
+      try {
+        // Copiar el archivo al directorio del módulo dentro de los archivos públicos
+        $destination = $logos_directory . '/' . $filename;
+        $uri = $file_system->copy($file_path, $destination, FileSystemInterface::EXISTS_REPLACE);
+        if ($uri) {
+          // Crear la entidad File
+          $file = File::create([
+            'uri' => $uri,
+            'status' => 1, // Marca el archivo como permanente
+            'filename' => $filename,
+          ]);
+          $file->setPermanent();
+          $file->save();
+          $federacion['logo_fid'] = $file->id();        } else {
+          \Drupal::logger('cafd_federaciones')->error('No se pudo copiar el archivo @file', ['@file' => $file_path]);
+          $federacion['logo_fid'] = NULL;
+        }      } catch (\Exception $e) {
+        \Drupal::logger('cafd_federaciones')->error('Error al procesar el archivo @file: @message', [
+          '@file' => $file_path,
+          '@message' => $e->getMessage(),
+        ]);
+        $federacion['logo_fid'] = NULL;
+      }
+    } else {
+      \Drupal::logger('cafd_federaciones')->notice('El archivo @file no existe', ['@file' => $file_path]);
+      $federacion['logo_fid'] = NULL;
+    }
+    // Insertar la federación en la base de datos
+    $connection->insert('federaciones')
+      ->fields(['nombre', 'direccion', 'telefono', 'email', 'weburl', 'logo_fid'])
+      ->values($federacion)
+      ->execute();
+  }
+  \Drupal::messenger()->addMessage(t('Se insertaron @count federaciones demo con sus logos.', ['@count' => count($federaciones)]));
+}

@@ -1,0 +1,32 @@
+<?php
+/**
+ * Implements hook_install().
+ */
+
+function cafd_estadisticas_install() {
+  $theme = \Drupal::config('system.theme')->get('default');
+
+  $existing_block = \Drupal::entityTypeManager()
+    ->getStorage('block')
+    ->load('bloque_estadisticas_auto');
+
+  if (!$existing_block) {
+    $block_1 = \Drupal\block\Entity\Block::create([
+      'id'         => 'bloque_estadisticas_auto',
+      'plugin'     => 'bloque_estadisticas',
+      'region'     => 'content',
+      'theme'      => $theme,
+      'weight'     => 1,
+      'visibility' => [
+        'request_path' => [
+          'id' => 'request_path',
+          'pages' => '/inicio',
+          'negate' => FALSE,
+          'context_mapping' => [],
+        ],
+      ],
+    ]);
+    $block_1->save();
+  }
+}
+

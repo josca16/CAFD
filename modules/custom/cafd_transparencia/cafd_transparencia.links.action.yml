@@ -1,0 +1,5 @@
+cafd_transparencia.pdf_edit:
+  route_name: cafd_transparencia.edit_pdf
+  title: 'Editar PDF'
+  appears_on:
+    - cafd_transparencia.pdf_list

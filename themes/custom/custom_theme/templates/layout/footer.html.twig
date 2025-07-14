@@ -1,0 +1,68 @@
+{# ============================================================
+    Archivo: footer.html.twig
+    Descripción: Plantilla Twig para el footer del sitio.
+    Contiene tres columnas: Logo, Redes Sociales + Políticas +
+    Contacto, Año y CAFD
+============================================================ #}
+
+<footer class="footer">
+  <div class="footer__container">
+
+    <!-- Columna 1: Logo de CAFD -->
+    <div class="footer__logo-column">
+      <!-- Logo principal del footer y redirección a home-->
+      <a href="/">
+        <img src="{{ file_url(directory ~ '/images/LOGO-CAFD.png') }}" alt="CAFD Logo" class="footer__logo">
+      </a>
+    </div>
+
+    <!-- Columna 2: Redes sociales y enlaces de políticas -->
+    <div class="footer__column-links">
+
+      <!-- Enlaces a redes sociales -->
+      <div class="footer__links-rrss">
+        <a href="https://www.instagram.com/cafd_oficial/" target="_blank">
+          <img src="{{ file_url(directory ~ '/images/instagram.png') }}" alt="Instagram" class="social__icon-img">
+        </a>
+        <a href="https://www.facebook.com/Cafdsocial/" target="_blank">
+          <img src="{{ file_url(directory ~ '/images/facebook.png') }}"alt="Facebook" class="social__icon-img">
+        </a>
+        <a href="https://twitter.com/Cafdsocial" target="_blank">
+          <img src="{{ file_url(directory ~ '/images/twitter.png') }}" alt="Twitter" class="social__icon-img">
+        </a>
+      </div>
+
+      <!-- Enlaces de política de privacidad y contacto -->
+      <div class="footer__links-politicaContacto">
+        <a href="/politica-privacidad">Política de Privacidad y Cookies</a>
+        <span class="separator">|</span>
+        <a href="/contacto">Contacto</a>
+      </div>
+
+    </div>
+
+    <!-- Columna 3: Información de contacto (Dirección, Email y Teléfono) -->
+    <div class="footer__column-info">
+      <div class="footer__contact-item">
+        <!-- Icono de ubicación -->
+        <img src="{{ file_url(directory ~ '/images/ubicacion.png') }}" alt="Ubicación" class="footer__icon-info">
+        <span>Calle Benidorm, nº 5 escalera 1, 2.º A - 41001 Sevilla</span>
+      </div>
+      <div class="footer__contact-item footer__contact-email">
+        <!-- Icono de correo electrónico -->
+        <img src="{{ file_url(directory ~ '/images/email.png') }}" alt="Email" class="footer__icon-info">
+        <span>info@cafd.es</span>
+      </div>
+      <div class="footer__contact-item footer__contact-tlf">
+        <!-- Icono de teléfono -->
+        <img src="{{ file_url(directory ~ '/images/tlf.png') }}" alt="Teléfono" class="footer__icon-info">
+        <span>954 460 110</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección de copyright: muestra el año actual y el nombre de la organización -->
+  <div class="footer__bottom">
+    &copy; {{ "now"|date("Y") }} CAFD
+  </div>
+</footer>

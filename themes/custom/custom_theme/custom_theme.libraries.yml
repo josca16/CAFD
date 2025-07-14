@@ -1,0 +1,19 @@
+global-styling:
+  version: 1.x
+  css:
+    theme:
+      css/custom_style.css: {}
+      css/front-page.css: {}
+      css/header.css: {}
+      css/footer.css: {}
+      css/cookies.css: {}
+      css/equipo.css: {}
+      css/aula_virtual.css: {}
+
+  js:
+    js/script.js: {}
+    js/script_transparencia.js: {}
+    js/script_aula.js: {}
+  dependencies:
+    - core/jquery
+    - core/once

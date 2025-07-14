@@ -1,0 +1,33 @@
+<?php
+/**
+ * Implements hook_install().
+ */
+
+function cafd_redessociales_install() {
+  // Posicionar los bloques en la región 'content' del tema activo
+  $theme = \Drupal::config('system.theme')->get('default');
+
+  $existing_block = \Drupal::entityTypeManager()
+    ->getStorage('block')
+    ->load('bloque_redessociales_auto');
+
+  if (!$existing_block) {
+
+  $block_1 = \Drupal\block\Entity\Block::create([
+    'id'         => 'bloque_redessociales_auto',
+    'plugin'     => 'bloque_redes_sociales',
+    'region'     => 'content',
+    'theme'      => $theme,
+    'weight'     => 6,
+   'visibility' => [
+    'request_path' => [
+      'id' => 'request_path',
+      'pages' => '/inicio',
+      'negate' => FALSE,
+      'context_mapping' => [],
+    ],
+  ],
+  ]);
+  $block_1->save();
+  }
+}

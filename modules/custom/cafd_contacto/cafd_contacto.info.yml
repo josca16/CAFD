@@ -1,0 +1,9 @@
+name: 'CAFD Contacto'
+type: module
+description: 'Proporciona una página de contacto personalizada con formulario y mapa para CAFD.'
+core_version_requirement: ^9 || ^10
+package: Custom
+version: '1.0'
+
+libraries:
+  - cafd_contacto/global-styling

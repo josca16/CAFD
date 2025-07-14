@@ -1,0 +1,4 @@
+services:
+  cafd_federaciones.manager:
+    class: Drupal\cafd_federaciones\Services\FederacionesManager
+    arguments: ['@entity_type.manager']

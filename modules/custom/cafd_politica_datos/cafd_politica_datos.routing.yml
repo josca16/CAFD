@@ -1,0 +1,19 @@
+cafd_politica_datos.page:
+  path: '/politica-privacidad'
+  defaults:
+    _controller: '\Drupal\cafd_politica_datos\Controller\CafdPoliticaDatosController::page'
+    _title: 'Política de Cookies'
+  requirements:
+    _permission: 'access content'
+
+cafd_politica_datos.get_detail:
+  path: '/cafd-politica/get-detail/{seccion_id}'
+  defaults:
+    _controller: '\Drupal\cafd_politica_datos\Controller\CafdPoliticaDatosController::getPoliticaDetalle'
+    _title: 'Get Política Detail'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      seccion_id:
+        type: string

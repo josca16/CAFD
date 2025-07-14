@@ -1,0 +1,146 @@
+{# filepath: t:\CAFD\themes\custom\custom_theme\templates\layout\page--formacion.html.twig #}
+
+{% extends "page.html.twig" %}
+
+
+{% block page_content %}
+  <div class=".page-wrapper"> {# Contenedor principal de la página con un borde rojo para visualizar límites para depuración #}
+
+    {# Main #}
+    <main role="main" style="background: white;"> {# Contenedor principal para el contenido de la página, con fondo blanco que es el estándar de la web. Se combina con #ECF4FE #}
+
+      <div class="aula-virtual-container">
+        <div class="aula-virtual-col aula-virtual-bienvenida">
+          <div class="bienvenida-bloque">
+            <p>
+              Te damos la bienvenida al <strong>AULA VIRTUAL</strong> de la<br>
+              <strong>Confederación Andaluza de Federaciones Deportivas</strong>.
+              Introduciendo los datos de usuario y contraseña que te hemos facilitado, accederás a tu acción formativa.
+            </p>
+            <p>
+              Si necesitas ayuda, no dudes en contactar con nosotros.
+            </p>
+          </div>
+
+          <div class="contacto-bloque-titulo">
+            <h3>CONTACTO</h3>
+          </div>
+          <div class="contacto-bloque-info">
+            <p><strong>📞 954 460 110</strong></p>
+            <p><strong>✉️ formacion@cafd.es</strong></p>
+            <p>Lunes a Viernes: <strong>10:00 h a 14:00 h</strong></p>
+            <p>C/Benidorm, nº5 escalera 1,<br>2ºA - 41001 Sevilla</p>
+          </div>
+        </div>
+
+        <div class="aula-virtual-col aula-virtual-login">
+          <div class="login-bloque">
+            <h3>ACCESO AULA</h3>
+            <form action="#" method="POST" class="login-form">
+              <div class="form-group">
+                <label for="username">Nombre de usuario</label>
+                <input type="text" id="username" name="username" placeholder="Nombre de usuario" required>
+              </div>
+              <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+              </div>
+              <button type="submit" class="btn-acceder">Acceder</button>
+            </form>
+            <a href="#" class="forgot-password">¿Olvidó su contraseña?</a>
+          </div>
+        </div>
+
+        <div class="aula-virtual-col aula-virtual-extra">
+          <div class="aula-virtual-esferas">
+            <!-- Bloque de Catálogo -->
+            <div class="catalogo-bloque">
+              <h3>CATÁLOGO</h3>
+              <div class="catalogo-esfera">
+                <img src="{{ directory }}/images/catalogo.png" alt="Catálogo">
+              </div>
+              <a href="https://aulavirtual.cafd.es/blocks/html_externo/view.php?id=27" class="catalogo-texto">Revisa nuestro catálogo</a>
+            </div>
+
+            <!-- Bloque de Solicitud de Información -->
+            <div class="solicitud-bloque">
+              <h3>SOLICITUD DE INFORMACIÓN</h3>
+              <div class="solicitud-esfera">
+                <img src="{{ directory }}/images/info.png" alt="Solicitud de Información">
+              </div>
+              <a href="https://open.tutoring.es/extranet/formulario/cafd" class="solicitud-texto">¿Necesitas información?</a>
+            </div>
+          </div>
+
+          <!-- Bloque de Preguntas Frecuentes -->
+          <div class="preguntas-frecuentes">
+            <h3>PREGUNTAS FRECUENTES</h3>
+            <div class="pregunta">
+              <button onclick="toggleCollapse(this)" class="pregunta-titulo">
+                ¿Por qué no puedo acceder a la plataforma?
+
+                <!--Svg de la flecha para abajo -->
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 18 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon-flecha flecha-abajo">
+                <path stroke="none" d="M0 0h18v24H0z" fill="none"/>
+                <path d="M4 11l8 3l8 -3" /> 
+                </svg>
+
+                <!--Svg de la flecha para arriba -->
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 18 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon-flecha flecha-arriba">
+                <path stroke="none" d="M0 0h18v24H0z" fill="none"/>
+                <path d="M4 13l8 -3l8 3" />
+                </svg>
+              </button>
+              <div class="respuesta">
+                La causa más probable es que se haya olvidado la contraseña, esté usando una incorrecta o la esté escribiendo mal, especialmente si incluye mayúsculas y minúsculas que deben coincidir exactamente.
+              </div>
+            </div>
+            <div class="pregunta">
+              <button onclick="toggleCollapse(this)" class="pregunta-titulo">
+                ¿Cómo regreso a la página principal del curso?
+
+                <!--Svg de la flecha para abajo -->
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 18 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon-flecha flecha-abajo">
+                <path stroke="none" d="M0 0h18v24H0z" fill="none"/>
+                <path d="M4 11l8 3l8 -3" /> 
+                </svg>
+
+                <!--Svg de la flecha para arriba -->
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 18 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon-flecha flecha-arriba">
+                <path stroke="none" d="M0 0h18v24H0z" fill="none"/>
+                <path d="M4 13l8 -3l8 3" />
+
+                </svg>
+              </button>
+              <div class="respuesta">
+                Utilice la Barra de navegación que está en la parte superior de la página.
+              </div>
+            </div>
+            <div class="pregunta">
+              <button onclick="toggleCollapse(this)" class="pregunta-titulo">
+                ¿Cómo puedo cambiar la configuración de las notificaciones por correo electrónico?
+
+                <!--Svg de la flecha para abajo -->
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 18 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon-flecha flecha-abajo">
+                <path stroke="none" d="M0 0h18v24H0z" fill="none"/>
+                <path d="M4 11l8 3l8 -3" /> 
+                </svg>
+
+                <!--Svg de la flecha para arriba -->
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 18 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon-flecha flecha-arriba">
+                <path stroke="none" d="M0 0h18v24H0z" fill="none"/>
+                <path d="M4 13l8 -3l8 3" />
+                </svg>
+              </button>
+              <div class="respuesta">
+                En el bloque Administración, opción Perfil. En la pantalla de perfil pulsar en la pestaña Editar información, donde encontraremos los siguientes campos: Dirección de correo, para indicar nuestra cuenta de correo electrónico; Mostrar correo, para que se muestre o no la cuenta de correo en el perfil; Correo activado, si no está activado no recibiremos los correos del curso; Descripción, hay que poner algo, ya que el campo es obligatorio. Una vez modificada y revisadas estas opciones, guardaremos los cambios pulsando en el botón Actualizar información personal. Este botón se encuentra en la parte inferior de la página.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}
+
+

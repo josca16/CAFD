@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @file
+ * Contiene el código principal del módulo CAFD Política de Datos.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function cafd_politica_datos_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Proporciona ayuda para la página principal del módulo.
+    case 'help.page.cafd_politica_datos':
+      return '<p>' . t('Este módulo muestra información sobre la política de cookies y protección de datos.') . '</p>';
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function cafd_politica_datos_theme($existing, $type, $theme, $path) {
+  return [
+    'cafd_politica_datos_page' => [
+      'variables' => [
+        'politica_data' => [],
+      ],
+      // Drupal puede inferir el nombre de la plantilla si coincide con el hook y está en /templates
+      // 'template' => 'cafd-politica-datos-page',
+      // Drupal también puede inferir la ruta si es la estándar
+      // 'path' => $path . '/templates',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function cafd_politica_datos_preprocess_page(&$variables) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  
+  // Si estamos en la página de política de cookies
+  if ($route_name === 'cafd_politica_datos.page') {
+    // Ocultar el logo
+    $variables['page']['header']['logo'] = NULL;
+    
+    // Añadir el título "Política de Cookies" en el header
+    $variables['page']['header']['title'] = [
+      '#type' => 'markup',
+      '#weight' => -10,
+    ];
+    
+    // Añadir la clase CSS necesaria al header
+    if (isset($variables['page']['header']['#attributes']['class'])) {
+      $variables['page']['header']['#attributes']['class'][] = 'politica-header';
+    }
+    else {
+      $variables['page']['header']['#attributes']['class'] = ['politica-header'];
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{{ attach_library('custom_theme/global-styling') }}
+{{ attach_library('cafd_politica_datos/detalle_politica') }}
+
+<div class="page-wrapper">
+    <div class="cafd-politica-title">
+        <div class="cafd-politica-title-inner">
+            <h1>Política de Privacidad y Cookies</h1>
+        </div>
+    </div>
+  <main role="main" class="cafd-politica-main">
+    <section class="cafd-politica-main">
+        <div class="cafd-politica-content">
+            {% for seccion in politica_data %}
+            {% if seccion.active %}
+              <div class="cafd-politica-title">
+                {{ seccion.titulo }}
+              </div>
+              <div class="cafd-politica-desc">
+                {{ seccion.descripcion|raw }}
+              </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="cafd-politica-cards">
+          {% for seccion in politica_data %}
+            <div class="cafd-politica-card" data-seccion-id="{{ seccion.id }}">
+              <div class="cafd-politica-card-content">
+                <h3>{{ seccion.titulo }}</h3>
+                <p>{{ seccion.descripcion|striptags|split('.')|first }}.</p>
+              </div>
+            </div>
+          {% endfor %}
+      </div>
+    </section>
+  </main>
+</div>

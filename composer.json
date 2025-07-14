@@ -1,0 +1,20 @@
+{
+    "require": {
+        "drupal/core-recommended": "*",
+        "drupal/core-composer-scaffold": "*",
+        "drupal/core-project-message": "*"
+    },
+    "require-dev": {
+        "drupal/core-dev": "^10.4"
+    },
+    "config": {
+        "allow-plugins": {
+            "drupal/core-composer-scaffold": true,
+            "php-http/discovery": true,
+            "drupal/core-project-message": true,
+            "phpstan/extension-installer": true,
+            "tbachert/spi": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

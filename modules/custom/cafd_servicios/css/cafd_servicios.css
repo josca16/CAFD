@@ -1,0 +1,326 @@
+/* Reset y estilos base */
+body {
+  background: #FFFFFF;
+  font-family: 'Kanit', Arial, sans-serif;
+  color: #222;
+  margin: 0;
+}
+
+/* Ocultar breadcrumb y elementos innecesarios */
+.breadcrumb,
+.feed-icon,
+nav[aria-label="breadcrumb"],
+.page-title {
+  display: none !important;
+}
+
+/* Header integrado con navbar */
+.cafd-page-title {
+  padding: 1rem 2rem;
+  margin: 0.5rem 0;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+}
+
+.cafd-page-title-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.cafd-page-title h1 {
+  color: #003366; 
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 0;
+  font-family: 'Kanit', Arial, sans-serif;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+/* Asegurar que el contenedor principal ocupa todo el ancho */
+.page-wrapper,
+.layout-container,
+.region-content {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Eliminar espacios no deseados */
+.main-content {
+  margin-top: 0 !important;
+}
+
+/* Main content con padding ajustado */
+.cafd-main {
+  background: #FFFFFF;
+  padding: 3rem 0;
+  min-height: 70vh;
+}
+
+.cafd-servicios-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Contenido detallado del servicio */
+.cafd-servicios-content {
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+  padding: 2.5rem;
+  background: linear-gradient(145deg, #ffffff, #f8fafc);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.6s ease-out;
+  display: none; /* Inicialmente oculto */
+}
+
+.cafd-servicios-content.active {
+  display: block; /* Se muestra cuando tiene la clase active */
+}
+
+.cafd-servicios-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #003366, #0066cc);
+}
+
+.cafd-servicios-laboral {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #003366;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(0, 51, 102, 0.1);
+  position: relative;
+}
+
+.cafd-servicios-desc {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #2d3748;
+}
+
+.cafd-servicios-desc ul {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.8rem;
+}
+
+.cafd-servicios-desc li {
+  position: relative;
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+.cafd-servicios-desc li:hover {
+  transform: translateX(5px);
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 15px rgba(0, 51, 102, 0.08);
+}
+
+/* Grid de servicios */
+.cafd-servicios-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 0 1.5rem;
+  perspective: 1000px;
+}
+
+.cafd-servicios-cards > :nth-last-child(-n+2) {
+  grid-column: span 1.5;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 400px;
+}
+
+.cafd-servicio-card {
+  background: linear-gradient(145deg, #ffffff, #f5f7fa);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+  position: relative;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.cafd-servicio-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(0, 51, 102, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cafd-servicio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 51, 102, 0.15);
+}
+
+.cafd-servicio-card:hover::before {
+  opacity: 1;
+}
+
+.cafd-servicio-card.is-active {
+  background: linear-gradient(145deg, #003366, #004080);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 51, 102, 0.2);
+}
+
+.cafd-servicio-card h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #003366;
+  margin-bottom: 1.2rem;
+  position: relative;
+  padding-bottom: 0.8rem;
+}
+
+.cafd-servicio-card h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: #003366;
+  transition: width 0.3s ease;
+}
+
+.cafd-servicio-card:hover h3::after {
+  width: 60px;
+}
+
+.cafd-servicio-card.is-active h3 {
+  color: #FFFFFF;
+}
+
+.cafd-servicio-card.is-active h3::after {
+  background: #ffffff;
+  width: 60px;
+}
+
+.cafd-servicio-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #4a5568;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.cafd-servicio-card.is-active p {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .cafd-servicios-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .cafd-servicios-cards > :nth-last-child(-n+2) {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .cafd-servicios-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .cafd-servicios-cards > :nth-last-child(-n+2) {
+    grid-column: span 1;
+    max-width: 100%;
+  }
+  
+  .cafd-page-title h1 {
+    font-size: 1.6rem;
+  }
+
+  .cafd-servicios-desc ul {
+    grid-template-columns: 1fr;
+  }
+
+  .cafd-servicios-content {
+    padding: 1rem;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cafd-servicios-content {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.cafd-servicios-title {
+  color: #000; /* Cambia el color a negro */
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-align: center;
+  text-shadow: none; /* Quita la sombra del texto */
+}
+
+/* Cambiar fondo del hero */
+.cafd-servicios-hero {
+  background: transparent; /* Quita el fondo */
+}
+
+/* Cambiar color del título de la sección de servicios */
+.cafd-servicios-laboral {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #000; /* Cambia el color a negro */
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1); /* Cambia el color del borde */
+}
+
+/* Cambiar color de los títulos de las tarjetas */
+.cafd-servicio-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #000; /* Cambia el color a negro */
+  margin-bottom: 1rem;
+}
+
+/* Mantener el color blanco para tarjetas activas */
+.cafd-servicio-card.is-active h3 {
+  color: #FFFFFF;
+}

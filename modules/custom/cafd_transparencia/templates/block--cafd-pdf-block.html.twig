@@ -1,0 +1,137 @@
+{# Archivo modules/custom/cafd_transparencia/templates/block--cafd-pdf-block.html.twig #}
+
+<section class="transparencia-section">
+  <div class="transparencia-grid">
+
+    {% set categorias_keys = ['estructura', 'economicos', 'normativa', 'actividades'] %}
+    {% set iconos = {
+      'estructura': 'icono-1.svg',
+      'economicos': 'icono-2.svg',
+      'normativa': 'icono-3.svg',
+      'actividades': 'icono-4.svg'
+    } %}
+
+    {% for key in categorias_keys %}
+      {% if categorias[key] is defined %}
+        {% set categoria = categorias[key] %}
+        <div class="transparencia-col-wrapper">
+          <div class="transparencia-icon-title">
+            <div class="icono-con-fondo">
+              <img src="{{ directory }}/images/{{ iconos[key] }}" alt="{{ categoria.title }}">
+            </div>
+            <h2>{{ categoria.title }}</h2>
+          </div>
+
+          <div class="transparencia-col">
+            {# Documentos sueltos #}
+            {% if categoria.sueltos is defined %}
+              <ul class="bloque-documentos">
+                {% for pdf in categoria.sueltos %}
+                  <li class="documento-card">
+                    <a href="{{ pdf.url }}" target="_blank">
+                      <span class="icono-pdf">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
+                             class="icon icon-tabler icon-tabler-file-type-pdf">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                          <path d="M14 3v4a1 1 0 0 0 1 1h4"/>
+                          <path d="M5 12v-7a2 2 0 0 1 2 -2h7l5 5v4"/>
+                          <path d="M5 18h1.5a1.5 1.5 0 0 0 0 -3h-1.5v6"/>
+                          <path d="M17 18h2"/>
+                          <path d="M20 15h-3v6"/>
+                          <path d="M11 15v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z"/>
+                        </svg>
+                      </span>
+                      {{ pdf.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+            {# Documentos agrupados #}
+            {% if categoria.agrupados is defined %}
+              {% for grupo, documentos in categoria.agrupados %}
+                <div class="documento-card">
+                  <button class="desplegable-btn">
+                    <span class="icono-folder">
+                      <svg class="icono-folder-cerrado" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2" />
+                      </svg>
+                      <svg class="icono-folder-abierto" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M5 19l2.757 -7.351a1 1 0 0 1 .936 -.649h12.307a1 1 0 0 1 .986 1.164l-.996 5.211a2 2 0 0 1 -1.964 1.625h-14.026a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v2" />
+                      </svg>
+                    </span>
+                    {{ grupo }}
+                    <span class="flecha">▼</span>
+                  </button>
+                  <ul class="contenido-desplegable">
+                    {% for pdf in documentos|slice(0, 4) %}
+                      <li>
+                        <a href="{{ pdf.url }}" target="_blank">
+                          <span class="icono-pdf">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
+                                 class="icon icon-tabler icon-tabler-file-type-pdf">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                              <path d="M14 3v4a1 1 0 0 0 1 1h4"/>
+                              <path d="M5 12v-7a2 2 0 0 1 2 -2h7l5 5v4"/>
+                              <path d="M5 18h1.5a1.5 1.5 0 0 0 0 -3h-1.5v6"/>
+                              <path d="M17 18h2"/>
+                              <path d="M20 15h-3v6"/>
+                              <path d="M11 15v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z"/>
+                            </svg>
+                          </span>
+                          {{ pdf.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+
+                    {% if documentos|length > 4 %}
+                      <div class="ocultos" style="display: none;">
+                        {% for pdf in documentos|slice(4) %}
+                          <li>
+                            <a href="{{ pdf.url }}" target="_blank">
+                              <span class="icono-pdf">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
+                                     class="icon icon-tabler icon-tabler-file-type-pdf">
+                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                  <path d="M14 3v4a1 1 0 0 0 1 1h4"/>
+                                  <path d="M5 12v-7a2 2 0 0 1 2 -2h7l5 5v4"/>
+                                  <path d="M5 18h1.5a1.5 1.5 0 0 0 0 -3h-1.5v6"/>
+                                  <path d="M17 18h2"/>
+                                  <path d="M20 15h-3v6"/>
+                                  <path d="M11 15v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z"/>
+                                </svg>
+                              </span>
+                              {{ pdf.title }}
+                            </a>
+                          </li>
+                        {% endfor %}
+                      </div>
+
+                      <li>
+                        <button class="ver-mas-btn">Ver más</button>
+                      </li>
+                    {% endif %}
+                  </ul>
+                </div>
+              {% endfor %}
+            {% endif %}
+
+            {% if (categoria.sueltos is not defined or categoria.sueltos|length == 0)
+              and (categoria.agrupados is not defined or categoria.agrupados|length == 0) %}
+              <p style="text-align: center; color: #888;">No hay documentos disponibles.</p>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+
+  </div>
+</section>

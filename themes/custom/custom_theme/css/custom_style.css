@@ -1,0 +1,40 @@
+/* ============================================================
+   Archivo: custom_style.css
+   Descripción: Estilos CSS para todas las páginas
+   ============================================================ */
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #007acc;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+#content.region.region--content {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+/* ------------------ CONTENEDOR GENERAL ------------------ */
+.page-wrapper {
+  display: flex;              /* Estructura vertical (header, main, footer) */
+  flex-direction: column;     /* Apila los elementos verticalmente */
+  min-height: 100vh;          /* Altura mínima del viewport completo */
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* ------------------ CONTENIDO PRINCIPAL ------------------ */
+main {
+  flex: 1;                    /* Rellena el espacio entre header y footer */
+  display: block;
+}

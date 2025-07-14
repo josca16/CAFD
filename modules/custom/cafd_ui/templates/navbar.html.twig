@@ -1,0 +1,52 @@
+{# Archivo: navbar.html.twig #}
+<nav class="custom-navbar">
+  <div class="navbar-logo-container">
+    <a href="/" class="navbar-logo">
+      <img src="/modules/custom/cafd_ui/images/logo_navbar.png" alt="CAFD">
+    </a>
+  </div>
+
+  <div class="navbar-links-container">
+    <ul class="navbar-list">
+      {% for link in links %}
+        <li class="navbar-item{% if link.active %} active{% endif %}">
+          <a href="{{ link.url }}" class="navbar-link"{% if link.external %} target="_blank"{% endif %}>{{ link.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="hamburger">
+    <button id="openMenu">&#9776;</button>
+  </div>
+</nav>
+
+{# Menú hamburguesa móvil (ya implementado) #}
+<nav id="mobileMenu" class="menu-overlay">
+  <div class="menu-header">
+    <a href="/" class="navbar-logo">
+      <img src="/modules/custom/cafd_ui/images/logo_navbar.png" alt="CAFD">
+    </a>
+    <button id="closeMenu" class="close-icon">✕</button>
+  </div>
+  <ul class="menu-list">
+    {% for link in links %}
+      <li class="menu-item{% if link.active %} active{% endif %}">
+        <a href="{{ link.url }}" class="menu-link"{% if link.external %} target="_blank"{% endif %}>{{ link.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
+
+{# Menú hamburguesa tablet (panel dropdown) #}
+<div id="tabletMenu" class="tablet-menu-dropdown">
+  <ul class="tablet-menu-list">
+    {% for link in links %}
+      <li>
+        <a href="{{ link.url }}" class="tablet-menu-link{% if link.active %} active{% endif %}" {% if link.external %}target="_blank"{% endif %}>
+          {{ link.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

@@ -1,0 +1,4 @@
+services:
+  cafd_colabs.colaboradores_manager:
+    class: Drupal\cafd_colabs\ColaboradoresManager
+    arguments: ['@entity_type.manager']

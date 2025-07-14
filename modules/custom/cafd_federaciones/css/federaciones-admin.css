@@ -1,0 +1,104 @@
+/* Estilos para el formulario de bu00fasqueda en la administraciu00f3n */
+.federacion-search-container {
+   margin-bottom: 20px;
+   padding: 15px;
+   background: #F5F5F5;
+   border-radius: 4px;
+}
+.federacion-admin-search-form .form-item {
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap;
+   gap: 10px;
+}
+.federacion-admin-search-form label {
+   font-weight: bold;
+   margin-right: 10px;
+}
+.federacion-admin-search-form input[type="text"] {
+   padding: 5px;
+   width: 250px;
+   margin-right: 10px;
+}
+
+/* Estilos para la tabla */
+.federaciones-admin-table {
+   width: 100%;
+   border-collapse: collapse;
+}
+.federaciones-admin-table th {
+   background-color: #F5F5F5;
+   padding: 10px;
+   text-align: left;
+   white-space: nowrap; /* Evita que los encabezados se rompan */
+}
+.federaciones-admin-table td {
+   padding: 8px;
+   border-bottom: 1px solid #ddd;
+}
+
+/* Estilos responsivos para la tabla */
+@media screen and (max-width: 768px) {
+   /* Contenedor con scroll horizontal solo para la tabla */
+   .federaciones-admin-table-container {
+      width: 100%;
+      overflow-x: auto; /* Habilita scroll horizontal */
+      -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+      margin-bottom: 20px;
+      position: relative; /* Importante para aislar el scroll */
+      z-index: 1; /* Asegura que el contenedor esté por encima */
+   }
+
+   /* Asegura que la tabla tenga un ancho mu00ednimo para forzar el scroll */
+   .federaciones-admin-table {
+      min-width: 800px;
+      table-layout: fixed; /* Ayuda a controlar el ancho de las columnas */
+   }
+
+   /* Fija el ancho de las columnas para mejor control */
+   .federaciones-admin-table th,
+   .federaciones-admin-table td {
+      width: auto;
+      max-width: 200px; /* Ancho máximo para cada columna */
+      overflow: hidden;
+      text-overflow: ellipsis; /* Muestra ... si el texto es muy largo */
+   }
+
+   /* Estilo para el scrollbar horizontal en WebKit */
+   .federaciones-admin-table-container::-webkit-scrollbar {
+      height: 8px;
+   }
+
+   .federaciones-admin-table-container::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+   }
+
+   .federaciones-admin-table-container::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 4px;
+   }
+
+   .federaciones-admin-table-container::-webkit-scrollbar-thumb:hover {
+      background: #555;
+   }
+
+   /* Estilo para el scrollbar en Firefox */
+   .federaciones-admin-table-container {
+      scrollbar-width: thin;
+      scrollbar-color: #888 #f1f1f1;
+   }
+   
+   /* Asegura que el resto de la página no se desplace horizontalmente */
+   body, html, .layout-container, main, .region-content, .block-system-main-block {
+      overflow-x: hidden;
+      max-width: 100%;
+   }
+}
+
+/* Ajustes para pantallas muy pequeu00f1as */
+@media screen and (max-width: 480px) {
+   .federaciones-admin-table {
+      min-width: 700px; /* Ligeramente menor para pantallas muy pequeu00f1as */
+   }
+}

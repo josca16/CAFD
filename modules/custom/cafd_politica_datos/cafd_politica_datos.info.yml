@@ -1,0 +1,5 @@
+name: 'CAFD Política de Cookies (Vista Detallada)'
+type: module
+description: 'Muestra la información sobre la política de cookies y protección de datos con una estructura clara y organizada.'
+core_version_requirement: ^9 || ^10
+package: Custom

@@ -1,0 +1,246 @@
+<?php
+
+use Drupal\file\Entity\File;
+use Drupal\Core\File\FileSystemInterface;
+
+/**
+ * Implements hook_schema().
+ */
+function junta_directiva_schema() {
+  $schema['junta_directiva'] = [
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'nombre' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'cargo' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'federacion' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'imagen_jun' => [
+        'type' => 'varchar',
+        'length' => 1024,
+        'not null' => FALSE,
+      ],
+      'visibilidad' => [
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => TRUE,
+        'default' => 'ambos',
+      ],
+      'imagen_fid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function junta_directiva_uninstall() {
+  \Drupal::database()->schema()->dropTable('junta_directiva');
+}
+
+/**
+ * Implements hook_install().
+ */
+function junta_directiva_install() {
+  // Posicionar el bloque en la región 'content'.
+  $theme = \Drupal::config('system.theme')->get('default');
+
+  $existing_block = \Drupal::entityTypeManager()
+    ->getStorage('block')
+    ->load('bloque_juntaInicio_auto');
+
+  if (!$existing_block) {
+    $block_1 = \Drupal\block\Entity\Block::create([
+      'id' => 'bloque_juntaInicio_auto',
+      'plugin' => 'junta_directiva_inicio_block',
+      'region' => 'content',
+      'theme' => $theme,
+      'weight' => 2,
+      'visibility' => [
+        'request_path' => [
+          'id' => 'request_path',
+          'pages' => '/inicio',
+          'negate' => FALSE,
+          'context_mapping' => [],
+        ],
+      ],
+    ]);
+    $block_1->save();
+  }
+
+    $existing_block2 = \Drupal::entityTypeManager()
+    ->getStorage('block')
+    ->load('bloque_juntaList_auto');
+    
+  if (!$existing_block2) {
+      $block_2 = \Drupal\block\Entity\Block::create([
+    'id'         => 'bloque_juntaList_auto',
+    'plugin'     => 'junta_directiva_list_block',
+    'region'     => 'content',
+    'theme'      => $theme,
+    'weight'     => 0,
+    'visibility' => [
+    'request_path' => [
+      'id' => 'request_path',
+      'pages' => '/equipo',
+      'negate' => FALSE,
+      'context_mapping' => [],
+    ],
+  ],
+  ]);
+  $block_2->save();
+  }
+
+  // Inserta miembros de la junta con imagen copiada a public://
+  $miembros = [
+    [
+      'nombre' => 'Alfonso Escribano',
+      'cargo' => 'Presidente',
+      'federacion' => 'CAFD',
+      'imagen_nombre' => 'presidente.png',
+      'visibilidad' => 'ambos',
+    ],
+    [
+      'nombre' => 'Amparo Valdemoro Gordillo',
+      'cargo' => 'Secretaria General',
+      'federacion' => 'CAFD',
+      'imagen_nombre' => 'secretaria_general.png',
+      'visibilidad' => 'ambos',
+    ],
+    [
+      'nombre' => 'Antonio Castillo',
+      'cargo' => 'Área Contable y Fiscal',
+      'federacion' => 'CAFD',
+      'imagen_nombre' => 'contable.png',
+      'visibilidad' => 'inicio',
+    ],
+    [
+      'nombre' => 'Lorena Rodriguez',
+      'cargo' => 'Área Laboral y Formación',
+      'federacion' => 'CAFD',
+      'imagen_nombre' => 'laboral.png',
+      'visibilidad' => 'inicio',
+    ],
+    [
+      'nombre' => 'Rocío Suárez',
+      'cargo' => 'Área Laboral y Formación',
+      'federacion' => 'CAFD',
+      'imagen_nombre' => 'formacion.png',
+      'visibilidad' => 'inicio',
+    ],
+    [
+      'nombre' => 'Miguel Ángel Sierra Portillo',
+      'cargo' => 'VICEPRESIDENTE',
+      'federacion' => 'FEDERACIÓN ANDALUZA DE LUCHA Y MM.AA',
+      'imagen_nombre' => 'Miguel-Lucha.png',
+      'visibilidad' => 'junta',
+    ],
+    [
+      'nombre' => 'Alberto Rodriguez Cervantes',
+      'cargo' => 'VICEPRESIDENTE',
+      'federacion' => 'FEDERACIÓN ANDALUZA DE TENIS',
+      'imagen_nombre' => 'Alberto-Tennis.png',
+      'visibilidad' => 'junta',
+    ],
+    [
+      'nombre' => 'Cristóbal Martínez Fernández',
+      'cargo' => 'VOCAL',
+      'federacion' => 'FEDERACIÓN ANDALUZA DE DEPORTES PARA CIEGOS',
+      'imagen_nombre' => 'Cristobal-Ciegos.png',
+      'visibilidad' => 'junta',
+    ],
+   [
+      'nombre' => 'Pablo Castilla Arocha',
+      'cargo' => 'VOCAL',
+      'federacion' => 'FEDERACIÓN ANDALUZA DE TRIATLÓN',
+      'imagen_nombre' => 'Pablo-Triatlon.png',
+      'visibilidad' => 'junta',
+    ],
+   [
+      'nombre' => 'Pedro Curtido Naranjo',
+      'cargo' => 'VOCAL',
+      'federacion' => 'FEDERACIÓN ANDALUZA DE FÚTBOL',
+      'imagen_nombre' => 'Pedro-Futbol.png',
+      'visibilidad' => 'junta',
+    ],
+    [
+      'nombre' => 'Enrique López Cuenca',
+      'cargo' => 'VOCAL',
+      'federacion' => 'FEDERACIÓN ANDALUZA DE ATLETISMO',
+      'imagen_nombre' => 'Enrique-Atletismo.png',
+      'visibilidad' => 'junta',
+    ],
+    [
+      'nombre' => 'Carlos Rueda Velasco',
+      'cargo' => 'VOCAL',
+      'federacion' => 'FEDERACIÓN ANDALUZA DE CICLISMO',
+      'imagen_nombre' => 'Carlos-Ciclismo.png',
+      'visibilidad' => 'junta',
+    ],
+  ];
+
+  $file_system = \Drupal::service('file_system');
+  $directory = 'public://junta_directiva';
+  $file_system->prepareDirectory($directory, FileSystemInterface::CREATE_DIRECTORY);
+
+  $connection = \Drupal::database();
+
+  foreach ($miembros as $miembro) {
+    $source_path = DRUPAL_ROOT . '/modules/custom/junta_directiva/assets/fotos/' . $miembro['imagen_nombre'];
+    $destination = $directory . '/' . $miembro['imagen_nombre'];
+
+    if (file_exists($source_path)) {
+      // Copiar archivo a public://
+      $uri = $file_system->copy($source_path, $destination, FileSystemInterface::EXISTS_REPLACE);
+
+      // Crear entidad de archivo
+      $file = File::create([
+        'uri' => $uri,
+        'status' => 1,
+      ]);
+      $file->setPermanent();
+      $file->save();
+
+      $connection->insert('junta_directiva')
+        ->fields([
+          'nombre' => $miembro['nombre'],
+          'cargo' => $miembro['cargo'],
+          'federacion' => $miembro['federacion'],
+          'visibilidad' => $miembro['visibilidad'],
+          'imagen_fid' => $file->id(),
+
+        ])
+        ->execute();
+    } else {
+      // Insertar sin imagen
+      $connection->insert('junta_directiva')
+        ->fields([
+          'nombre' => $miembro['nombre'],
+          'cargo' => $miembro['cargo'],
+          'federacion' => $miembro['federacion'],
+          'visibilidad' => $miembro['visibilidad'],
+        ])
+        ->execute();
+    }
+  }
+}

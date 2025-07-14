@@ -1,0 +1,11 @@
+detalle_servicios: # Nuevo nombre para la librería
+  version: 1.x
+  css:
+    theme:
+      css/cafd_servicios.css: {}
+  js:
+    js/cafd_servicios.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once # Esencial para Drupal
+    - core/drupal      # Buena práctica

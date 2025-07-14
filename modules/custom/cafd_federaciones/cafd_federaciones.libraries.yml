@@ -1,0 +1,20 @@
+cafd_federaciones_styles:
+  version: 1.x
+  css:
+    theme:
+      css/federaciones.css: {}
+      css/formulario.css: {}
+
+formulario:
+  version: 1.x
+  css:
+    theme:
+      css/formulario.css: {}
+
+federaciones_admin:
+  version: 1.x
+  css:
+    theme:
+      css/federaciones-admin.css: {}
+  dependencies:
+    - core/drupal.pager

@@ -1,0 +1,6 @@
+cafd_federaciones.list:
+  title: 'Federaciones'
+  description: 'Ver todas las federaciones'
+  parent: system.admin_content
+  route_name: cafd_federaciones.list
+  weight: 0

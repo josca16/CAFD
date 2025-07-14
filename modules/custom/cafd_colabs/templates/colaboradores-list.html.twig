@@ -1,0 +1,18 @@
+<div class="colaboradores-list"> 
+
+  <h2 class="colaboradores-title">Colaboradores</h2>
+
+  <div class="colaboradores-publicos">
+    {% for colaborador in colaboradores %}
+      <div class="colaborador">
+        {% if colaborador.logo_url %}
+          <img src="{{ colaborador.logo_url }}" alt="{{ colaborador.nombre }}" />
+        {% endif %}
+      </div>
+    {% else %}
+      <p>No hay colaboradores para mostrar.</p>
+    {% endfor %}
+  </div>
+</div>
+
+

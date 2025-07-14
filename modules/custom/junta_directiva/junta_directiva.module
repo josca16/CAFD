@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * @file
+ * Contiene funciones de módulo para federaciones.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function junta_directiva_theme($existing, $type, $theme, $path) {
+  return [
+    // Formulario
+    'junta_directiva_form' => [
+      'render element' => 'form',
+      'template' => 'junta_directiva-form',
+      'path' => $path . '/templates',
+    ],
+
+    // Listado completo
+    'junta_directiva_list' => [
+      'variables' => [
+        'miembros' => NULL,
+        'nueva_url' => NULL,
+        'mostrar_acciones' => FALSE,
+      ],
+      'template' => 'junta_directiva-list',
+      'path' => $path . '/templates',
+    ],
+
+    // Bloque principal
+    'junta_directiva_block' => [
+      'variables' => [
+        'miembros' => NULL,
+        'es_portada' => FALSE,
+      ],
+      'template' => 'junta_directiva-block',
+      'path' => $path . '/templates',
+    ],
+
+    // 🔧 Bloque nuevo (inicio)
+    'junta_directiva_inicio' => [
+      'variables' => [
+        'miembros' => NULL,
+      ],
+      'template' => 'junta_directiva-inicio',
+      'path' => $path . '/templates',
+    ],
+  ];
+}
+
+/**
+ * Implementa un hook para el cache de la página.
+ */
+function junta_directiva_cache_tags() {
+  return ['federacion_list'];
+}
+
+
+

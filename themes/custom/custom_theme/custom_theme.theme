@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * Implementación de hook_preprocess_page().
+ */
+function custom_theme_preprocess_page(&$variables) {
+  // Añade una clase CSS al body para identificar el tema
+  $variables['attributes']['class'][] = 'custom-theme';
+}

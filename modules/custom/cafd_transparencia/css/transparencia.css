@@ -1,0 +1,270 @@
+/* ============================================================
+   ARCHIVO: transparencia.css (Optimizado)
+   DESCRIPCIÓN: Estilos base para la sección de Transparencia
+   ============================================================ */
+
+body {
+  background: #FFFFFF;
+  font-family: 'Kanit', Arial, sans-serif;
+  color: #222;
+  margin: 0;
+}
+
+/* Ocultar breadcrumb y elementos innecesarios */
+.breadcrumb,
+.feed-icon,
+nav[aria-label="breadcrumb"],
+.page-title {
+  display: none !important;
+}
+
+/* ----------------------- 1. Layout General ----------------------- */
+
+.transparencia-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.transparencia-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 300px);
+  gap: 20px;
+  justify-content: center;
+}
+
+/* ----------------------- 2. Columnas ----------------------- */
+
+.transparencia-col-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
+
+.transparencia-icon-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.icono-con-fondo {
+  background: #FFCC00;
+  padding: 15px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+}
+
+.icono-con-fondo img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.transparencia-icon-title h2 {
+  font-size: 1.5rem;
+  color: #003366;
+  margin: 0;
+  text-align: center;
+}
+
+
+/* ----------------------- 3. Contenedor de documentos ----------------------- */
+
+.transparencia-col {
+  background: #f4f4f4;
+  border: 2px solid #003366;
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ----------------------- 4. Listado y tarjetas ----------------------- */
+
+.bloque-documentos {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 5px;
+}
+
+.documento-card + .documento-card {
+  margin-top: 5px;
+}
+
+.documento-card a,
+.documento-card button {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: left;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background: #003366;
+  color: white;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.documento-card a:hover,
+.documento-card button:hover {
+  background-color: #F9B80C;
+  color: black;
+}
+
+.emoji {
+  margin-right: 6px;
+  font-size: 1.2rem;
+}
+
+/* ----------------------- 5. Desplegables ----------------------- */
+
+.desplegable-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  background: #003366;
+  color: white;
+  font-weight: bold;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.desplegable-btn:hover {
+  background-color: #F9B80C;
+  color: black;
+}
+.desplegable-btn:hover .flecha {
+  color: black;
+}
+.flecha {
+  transition: transform 0.3s ease;
+  margin-left: 10px;
+}
+.contenido-desplegable {
+  display: none;
+  list-style: none;
+  border: 2px solid #003366;
+  border-radius: 8px;
+  transition: max-height 0.3s ease;
+  background: #fef9e7;
+}
+.contenido-desplegable li {
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+.contenido-desplegable li a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.8rem;
+  display: block;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  width: 80%;
+  margin: 0 auto;
+}
+.contenido-desplegable li a:hover {
+  background-color: #f9b80c;
+  color: black;
+}
+.contenido-desplegable.colapsada {
+  max-height: none;
+  overflow: visible;
+}
+
+.contenido-desplegable.expandida {
+  max-height: 243px;
+  overflow-y: auto;
+}
+
+/* ----------------------- 6. Ver más / Ver menos ----------------------- */
+
+.ver-mas-btn {
+  margin: 8px auto 0 auto;
+  display: block;
+  background-color: #fef9e7;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-decoration: underline;
+}
+
+.ver-mas-btn:hover {
+  color: #F9B80C;
+}
+
+/* Estilos para el icono SVG de PDF */
+.icono-pdf {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  color: whitesmoke;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.icono-pdf svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+
+.icono-folder svg {
+  transition: opacity 0.2s ease;
+  vertical-align: middle;
+}
+.flecha {
+  transition: transform 0.3s ease;
+}
+
+/* ----------------------- 7. Responsive ----------------------- */
+
+@media screen and (min-width: 1400px) {
+  .transparencia-grid {
+    max-width: calc(4 * 300px + 3 * 20px);
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1399px) {
+  .transparencia-grid {
+    grid-template-columns: repeat(2, 300px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .transparencia-grid {
+    grid-template-columns: 300px;
+  }
+}
+
+#pdf-list-wrapper {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+

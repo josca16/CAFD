@@ -1,0 +1,36 @@
+{{ attach_library('custom_theme/global-styling') }}
+{{ attach_library('cafd_servicios/detalle_servicios') }}
+
+<div class="page-wrapper">
+    <div class="cafd-page-title">
+        <div class="cafd-page-title-inner">
+            <h1>Servicios</h1>
+        </div>
+    </div>
+  <main role="main" class="cafd-main">
+    <section class="cafd-servicios-main">
+        <div class="cafd-servicios-content">
+            {% for servicio in servicios_data %}
+            {% if servicio.active %}
+              <div class="cafd-servicios-laboral">
+                {{ servicio.titulo }}
+              </div>
+              <div class="cafd-servicios-desc">
+                {{ servicio.descripcion|raw }}
+              </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="cafd-servicios-cards">
+          {% for servicio in servicios_data %}
+            <div class="cafd-servicio-card" data-servicio-id="{{ servicio.id }}">
+              <div class="cafd-servicio-card-content">
+                <h3>{{ servicio.titulo }}</h3>
+                <p>{{ servicio.descripcion|striptags|split('.')|first }}.</p>
+              </div>
+            </div>
+          {% endfor %}
+      </div>
+    </section>
+  </main>
+</div>

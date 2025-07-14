@@ -1,0 +1,12 @@
+detalle_politica: # Nuevo nombre para la librería
+  version: 1.x
+  css:
+    theme:
+      css/cafd_politica_datos.css: {}
+  js:
+    js/cafd_politica_datos.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once # Esencial para Drupal
+    - core/drupal      # Buena práctica
+

@@ -1,0 +1,11 @@
+cafd_pdf_styles:
+  version: 1.x
+  css:
+    theme:
+      css/cafd-pdf-form.css: {}
+      css/transparencia.css: {}
+  js:
+    js/script_transparencia.js: {}
+  dependencies:
+    - core/jquery
+    - core/once

@@ -1,0 +1,64 @@
+<div class="federaciones-container">
+  <h3 class="titulo-federaciones">Listado de Federaciones Deportivas</h3>
+  
+  {# Formulario de búsqueda - Usar la URL actual en lugar de una ruta específica #}
+  <form method="get" class="buscador-federaciones">
+    <input type="text" name="nombre" placeholder="Buscar federación por nombre" value="{{ search|default('') }}">
+    <button type="submit">Buscar</button>
+    {% if search %}
+      <a href="{{ url('<current>') }}" class="btn-reset-busqueda">Limpiar búsqueda</a>
+    {% endif %}
+  </form>
+  
+  {% if federaciones is empty %}
+    <p class="mensaje-sin-resultados">No se encontraron federaciones que coincidan con la búsqueda.</p>
+  {% else %}
+    <div class="contenedor-items-federaciones">
+      {% for item in federaciones %}
+        <div class="federacion-item">
+          <div class="logo-container">
+            {% if item.logo_url %}
+              <img src="{{ item.logo_url }}" alt="Logo de {{ item.nombre }}">
+            {% else %}
+              <div class="no-logo">No hay logo disponible</div>
+            {% endif %}
+          </div>
+          <h4 class="federacion-nombre">{{ item.nombre }}</h4>
+          <div class="federacion-datos">
+            <div class="dato-row">
+              <span class="dato-label">Dirección:</span>
+              <span class="dato-valor">{{ item.direccion }}</span>
+            </div>
+            <div class="dato-row">
+              <span class="dato-label">Teléfono:</span>
+              <span class="dato-valor">{{ item.telefono }}</span>
+            </div>
+            <div class="dato-row">
+              <span class="dato-label">Email:</span>
+              <span class="dato-valor">
+                <a href="mailto:{{ item.email }}" class="email-link">{{ item.email }}</a>
+              </span>
+            </div>
+            <div class="web-container">
+              <a href="{{ item.weburl }}" target="_blank" class="btn-web">
+                <span class="web-icon">🌐</span>
+                <span class="web-text">Visitar web oficial</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  
+  {# Paginador #}
+  <div class="paginacion-federaciones">
+    {{ pager }}
+  </div>
+</div>
+
+
+
+
+
+

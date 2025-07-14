@@ -1,0 +1,375 @@
+
+/* Contenedor principal de los bloques de bienvenida y registro */
+.aula-virtual-container {
+    display: flex;
+    gap: 32px;
+    background: #ffffff;
+    padding: 32px;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Columnas dentro del contenedor principal */
+.aula-virtual-col {
+    flex: 1;
+    background: transparent;
+}
+
+/* Bloque de bienvenida */
+.aula-virtual-bienvenida .bienvenida-bloque {
+    background: #ffc107;
+    color: #222;
+    padding: 32px 24px;
+    border-radius: 8px;
+    font-size: 1.15em;
+    font-weight: 400;
+    text-align: center;
+    margin: 40px auto 24px; /* Margen superior de 40px y margen inferior de 24px */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.aula-virtual-bienvenida .bienvenida-bloque strong {
+    margin-top: 40px;
+    font-weight: 700;
+}
+
+/* Bloque de contacto */
+.contacto-bloque-titulo {
+    background: #ffc107;
+    color: #222;
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin: 0 auto 16px; /* Centra el bloque horizontalmente y mantiene el margen inferior */
+    max-width: 250px; /* Define el ancho máximo */
+}
+
+.contacto-bloque-titulo h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.contacto-bloque-info {
+    text-align: center;
+    color: #222;
+    margin-top: 24px; /* Margen superior para separar del bloque de bienvenida */
+}
+
+.contacto-bloque-info p {
+    margin: 8px 0;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+/* Bloque de registro */
+.login-bloque {
+    text-align: center;
+    background: #fdfbfb;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 2);
+    margin: 40px auto;
+    max-width: 400px;
+}
+
+.login-bloque h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #222;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.btn-acceder {
+    background: #002855;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-acceder:hover {
+    background: #001f40;
+}
+
+.forgot-password {
+    display: block;
+    margin-top: 16px;
+    font-size: 0.9em;
+    color: #002855;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Contenedor principal de las esferas y preguntas frecuentes */
+.aula-virtual-extra {
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+    margin-top: 40px; /* Separación de 40px con el margen superior */
+}
+
+/* Contenedor para las esferas */
+.aula-virtual-esferas {
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    max-width: 800px; /* Define un ancho máximo para limitar el contenido */
+    margin-top: -80px; /* Elevar las esferas a 40px del tope superior */
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    gap: 80px; /* Espaciado entre las esferas */
+    padding: 0 16px; /* Añade un poco de espacio lateral */
+}
+    
+    
+
+
+/* Bloque de la esfera de catálogo */
+.catalogo-bloque {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 32px;
+    margin-left: -170px; /* Ajusta este valor para mover la esfera hacia la izquierda */
+}
+
+/* Bloque de la esfera de solicitud de información */
+.solicitud-bloque {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 32px;
+}
+
+/* Esferas */
+.catalogo-esfera, .solicitud-esfera {
+    width: 120px;
+    height: 120px;
+    background: #ffc107;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Íconos dentro de las esferas */
+.catalogo-esfera img, .solicitud-esfera img {
+    width: 100%; /* Ocupa todo el ancho de la esfera */
+    height: 100%; /* Ocupa todo el alto de la esfera */
+    object-fit: cover; /* Asegura que la imagen se ajuste sin deformarse */
+    border-radius: 50%; /* Mantiene la forma circular */
+}
+
+/* Bloque de Preguntas Frecuentes */
+.preguntas-frecuentes {
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    max-width: 800px; /* Define un ancho máximo para limitar el contenido */
+    text-align: left;
+    margin-top: 100px; /* Añade separación con el margen superior */
+    margin-bottom: 60px;
+    padding: 0 16px; /* Añade un poco de espacio lateral */
+}
+
+.preguntas-frecuentes h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 16px;
+}
+
+.pregunta {
+    margin-bottom: 16px;
+}
+
+.pregunta-titulo {
+    background: none;
+    color: #002855;
+    padding: 0;
+    border: none;
+    text-align: left;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Respuestas ocultas por defecto */
+.respuesta {
+    max-height: 0; /* Oculta la respuesta */
+    overflow: hidden; /* Evita que el contenido desbordado sea visible */
+    transition: max-height 0.3s ease; /* Añade una transición suave */
+    padding: 0; /* Elimina el padding mientras está oculta */
+    font-size: 0.95em;
+    color: #000; /* Cambia el color del texto a negro */
+}
+
+/* Botón expandido */
+.pregunta-titulo.expanded {
+    font-weight: bold; /* Opcional: Cambia el estilo del botón cuando está expandido */
+    color: #002855;
+}
+
+.icon-flecha {
+  margin-left: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.flecha-abajo {
+  display: inline-block;
+}
+
+.flecha-arriba {
+  display: none;
+}
+
+
+/* Diseño responsivo para pantallas pequeñas (hasta 768px) */
+@media (max-width: 768px) {
+    .aula-virtual-container {
+        display: flex;
+        flex-direction: column; /* Apila los elementos verticalmente */
+        gap: 24px; /* Espaciado entre los bloques */
+    }
+
+    .aula-virtual-login {
+        order: -1; /* Registro de usuarios primero */
+        max-width: 100%; /* Asegura que ocupe todo el ancho disponible */
+        margin: 0 auto; /* Centra el bloque */
+    }
+
+    .aula-virtual-esferas {
+        order: 2; /* Esferas después del registro */
+        display: flex;
+        flex-direction: column; /* Coloca las esferas en vertical */
+        align-items: center; /* Centra las esferas horizontalmente */
+        margin-top: 40px; /* Ajusta el margen superior para alinearlo con los otros bloques */
+        gap: 24px; /* Espaciado entre las esferas */
+    }
+
+    .catalogo-bloque, .solicitud-bloque {
+        margin: 0; /* Elimina márgenes adicionales */
+    }
+
+    .preguntas-frecuentes {
+        order: 3; /* Preguntas frecuentes después de las esferas */
+        margin-top: 24px; /* Espaciado superior */
+    }
+
+    .contacto-bloque-titulo, .contacto-bloque-info {
+        order: 4; /* Contacto al final */
+        text-align: center; /* Centra el texto */
+        margin-top: 24px; /* Espaciado superior */
+    }
+}
+
+/* Diseño responsivo para pantallas medianas (entre 769px y 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .aula-virtual-container {
+        display: flex;
+        flex-direction: column; /* Apila los elementos verticalmente */
+        gap: 32px; /* Espaciado entre los bloques */
+    }
+
+    .aula-virtual-login {
+        order: -1; /* Registro de usuarios primero */
+        max-width: 500px; /* Ajusta el ancho del formulario */
+        margin: 0 auto; /* Centra el bloque */
+    }
+
+    .aula-virtual-esferas {
+        order: 2; /* Esferas después del registro */
+        flex-direction: row; /* Coloca las esferas en paralelo */
+        justify-content: center; /* Centra las esferas horizontalmente */
+        margin-top: 40px; /* Ajusta el margen superior para alinearlo con los otros bloques */
+        margin-left: auto;
+        margin-right: auto;
+        gap: 48px; /* Aumenta el espaciado entre las esferas */
+    }
+
+    .catalogo-bloque, .solicitud-bloque {
+        margin: 0; /* Elimina márgenes adicionales */
+    }
+
+    .preguntas-frecuentes {
+        order: 3; /* Preguntas frecuentes después de las esferas */
+        margin-top: 32px; /* Espaciado superior */
+        max-width: 700px; /* Ajusta el ancho máximo */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .contacto-bloque-titulo, .contacto-bloque-info {
+        order: 4; /* Contacto al final */
+        text-align: center; /* Centra el texto */
+        margin-top: 32px; /* Espaciado superior */
+    }
+}
+
+@media (min-width: 1024px) and (max-width:1600px) {
+    .aula-virtual-esferas{
+        display: flex;
+        flex-direction: column; /* Coloca las esferas en vertical */
+        align-items: center; /* Centra las esferas horizontalmente */
+        margin-top: 40px; /* Ajusta el margen superior para alinearlo con los otros bloques */
+        gap: 24px; /* Espaciado entre las esferas */
+    }
+
+    .catalogo-bloque, .solicitud-bloque {
+        margin: 0; /* Elimina márgenes adicionales */
+    }
+        
+}
+
+
+
+@media (min-width: 1600px) and (max-width:1920px) {
+    .aula-virtual-esferas{
+        margin-left: 150px;
+        gap: 20px;
+    }
+
+
+}
+
+@media (min-width: 1930px) and (max-width:2300px) {
+    .aula-virtual-esferas{
+        margin-left: 70px;
+        gap: 20px;
+    }
+
+
+}

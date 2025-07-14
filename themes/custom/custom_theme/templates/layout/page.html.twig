@@ -1,0 +1,19 @@
+{# Archivo: themes/custom/custom_theme/templates/layout/page.html.twig #}
+
+<div class="page-wrapper">                                 {# Contenedor principal de la página #}
+  {# Header sobrescribible #}
+  {% block page_header %}
+    {% include '@custom_theme/layout/header.html.twig' %}   {# Incluye la plantilla del Header (Encabezado) #}
+    {{ page.header }}                                       {# Renderiza el contenido de la región 'header' (una NavBar en este caso) #}
+  {% endblock %}
+
+  {# Main #}
+  <main role="main" style="background: white;">                          {# Contenedor principal para el contenido de la página, con fondo blanco que es el estándar de la web. Se combina con #ECF4FE #}
+    {% block page_content %}
+      {{ page.content }}
+    {% endblock %}
+  </main>
+    {% include '@custom_theme/layout/footer.html.twig' %}
+    {# Banner de cookies #}
+    {% include '@custom_theme/layout/cookie-banner.html.twig' %}
+</div>

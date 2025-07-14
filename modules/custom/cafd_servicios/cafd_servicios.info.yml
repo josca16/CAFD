@@ -1,0 +1,5 @@
+name: 'CAFD Servicios (Vista Detallada)'
+type: module
+description: 'Muestra una lista de servicios a la izquierda y el detalle del servicio seleccionado a la derecha, como en la imagen.'
+core_version_requirement: ^9 || ^10
+package: Custom

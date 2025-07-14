@@ -1,0 +1,345 @@
+/* Estilos generales para las tarjetas de federaciones */
+body {
+  background: #F4F4F4 !important;
+}
+.federaciones-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: transparent;
+}
+.titulo-federaciones {
+  font-size: 2.2rem;
+  color: #2C3E50;
+  margin-bottom: 36px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #E0E4EA;
+  display: block; /* Cambia a block */
+  padding-bottom: 8px;
+  box-shadow: 0 2px 8px rgba(34,56,81,0.03);
+  width: 100%;    /* Ocupa todo el ancho */
+  margin-left: 0; /* Asegura que no haya desplazamiento */
+  margin-right: 0;
+}
+/* Estilos para el buscador */
+.buscador-federaciones {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  gap: 10px;
+  background: #fff;
+  padding: 18px 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(34,56,81,0.08);
+}
+.buscador-federaciones input {
+  padding: 12px 18px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 320px;
+  font-size: 15px;
+  transition: border 0.2s;
+}
+.buscador-federaciones button {
+  padding: 12px 28px;
+  background-color: #1A73E8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.buscador-federaciones input:focus {
+  border: 0.09375rem solid #1A73E8;
+  outline: none;
+}
+.buscador-federaciones button:hover {
+  background-color: #155AB6;
+}
+.btn-reset-busqueda {
+  padding: 10px 15px;
+  background-color: #F1F1F1;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+}
+/* Mensaje cuando no hay resultados */
+.mensaje-sin-resultados {
+  text-align: center;
+  padding: 30px;
+  background-color: #F9F9F9;
+  border-radius: 8px;
+  color: #666;
+  font-size: 16px;
+}
+/* Contenedor de tarjetas */
+.contenedor-items-federaciones {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px; /*Margen entre tarjetas*/
+  align-items: center; /* IMPORTANTE */
+}
+/* Tarjeta individual */
+.federacion-item {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(34,56,81,0.10);
+  min-height: 500px; /* Aumenta la altura mínima */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 24px 16px 20px 16px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 100%;
+  transition: box-shadow 0.2s;
+}
+.federacion-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+/* Logo container (ajuste para centrar mejor) */
+.logo-container {
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F9F9F9;
+  padding: 10px;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+}
+.federacion-item img {
+  max-width: 100%;
+  max-height: 110px;
+  object-fit: contain;
+}
+.no-logo {
+  color: #999;
+  font-size: 14px;
+  text-align: center;
+}
+/* Nombre de la federación */
+.federacion-nombre {
+  background-color: #2C3E50;
+  color: white;
+  margin: 0;
+  padding: 14px 10px;
+  font-size: 1rem;
+  text-align: center;
+  min-height: 54px;
+  max-height: 72px; /* Permite hasta dos líneas */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  letter-spacing: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Permite dos líneas con puntos suspensivos si es necesario */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+/* Datos de la federación */
+.federacion-datos {
+  padding: 18px 0 0 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+.dato-row {
+  margin-bottom: 4px;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+}
+.dato-label {
+  font-weight: bold;
+  font-size: 14px;
+  color: #555;
+}
+.dato-valor {
+  font-size: 14px;
+  color: #333;
+  word-break: break-word;
+}
+/* Enlace de email */
+.email-link {
+  color: #1A73E8;
+  text-decoration: none;
+}
+.email-link:hover {
+  text-decoration: underline;
+}
+/* Contenedor del botón web */
+.web-container {
+  margin-top: auto;
+  padding-top: 15px;
+}
+/* Botón web */
+.btn-web {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  background-color: #2C3E50;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.2s, transform 0.2s;
+  width: 95%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.07);
+  height: 38px;
+  margin: 18px 0 0 0;
+  font-size: 15px;
+  gap: 8px;
+  border: none;
+}
+.btn-web:hover {
+  background-color: #031B3A;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+.web-icon {
+  margin-right: 8px;
+  font-size: 16px;
+}
+.web-text {
+  font-size: 14px;
+}
+/* Paginador */
+.paginacion-federaciones {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+}
+.pager li {
+  margin: 0;
+}
+.pager li a,
+.pager li.pager__item--current,
+.pager li span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 48px;
+  height: 48px;
+  padding: 0 16px;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #D1D5DB;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #1A73E8;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.pager svg {
+  stroke: currentColor;
+  width: 20px;
+  height: 20px;
+}
+/* Estado activo */
+.pager li.pager__item--current,
+.pager li span.pager__item--current {
+  background-color: #1A73E8;
+  color: white;
+  font-weight: bold;
+  border-color: #1A73E8;
+}
+/* Hover */
+.pager li a:hover {
+  background-color: #EAF2FF;
+  color: #155AB6;
+  border-color: #BCD4FA;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+}
+/* Botones deshabilitados */
+.pager li.is-disabled a,
+.pager li.is-disabled span {
+  background-color: #F3F4F6;
+  color: #C1C1C1;
+  border-color: #E5E7EB;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .federacion-item {
+    width: 100%;
+    min-width: unset;
+    max-width: 97vw;
+    margin: 14px auto;
+  }
+  @media (max-width: 1024px) {
+    .contenedor-items-federaciones {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .contenedor-items-federaciones {
+      grid-template-columns: 1fr;
+    }
+    .pager li a,
+    .pager li.pager__item--current,
+    .pager li span {
+      min-width: 32px;
+      height: 32px;
+      font-size: 13px;
+      padding: 0 8px;
+      border-radius: 6px;
+    }
+    .pager {
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .paginacion-federaciones {
+      padding: 0 10px;
+    }
+  }
+  .buscador-federaciones input {
+    width: 100%;
+  }
+  .federacion-item {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+

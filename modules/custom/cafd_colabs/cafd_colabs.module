@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function cafd_colabs_theme($existing, $type, $theme, $path) {
+  return [
+    'colaboradores_listado_custom' => [
+      'variables' => ['colaboradores' => []],
+      'template' => 'colaboradores-listado-custom',
+      'path' => $path . '/templates',
+    ],
+    'colaboradores_list' => [
+      'variables' => ['colaboradores' => []],
+      'template' => 'colaboradores-list',
+      'path' => $path . '/templates',
+    ],
+  ];
+}

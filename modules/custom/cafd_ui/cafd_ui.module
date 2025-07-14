@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Implementación de la barra de navegación personalizada.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function cafd_ui_theme() {
+  return [
+    'navbar' => [
+      'template' => 'navbar',
+      'variables' => [
+        'links' => [],
+      ],
+    ],
+  ];
+}

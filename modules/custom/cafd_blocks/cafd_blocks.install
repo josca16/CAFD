@@ -1,0 +1,63 @@
+<?php
+/**
+ * Implements hook_install().
+ */
+function cafd_blocks_install() {
+
+  // Establecer / como front page
+  \Drupal::configFactory()->getEditable('system.site')
+    ->set('page.front', '/inicio')
+    ->save();
+
+  // Posicionar los bloques en la región 'content' del tema activo
+  $theme = \Drupal::config('system.theme')->get('default');
+
+
+  $existing_block = \Drupal::entityTypeManager()
+    ->getStorage('block')
+    ->load('bloque_ventajas_cafd_auto');
+
+  if (!$existing_block) {
+
+  $block_1 = \Drupal\block\Entity\Block::create([
+    'id'         => 'bloque_ventajas_cafd_auto',
+    'plugin'     => 'bloque_ventajas_cafd',
+    'region'     => 'content',
+    'theme'      => $theme,
+    'weight'     => 1,
+    'visibility' => [
+    'request_path' => [
+      'id' => 'request_path',
+      'pages' => '/inicio',
+      'negate' => FALSE,
+      'context_mapping' => [],
+    ],
+  ],
+  ]);
+  $block_1->save();
+  }
+
+    $existing_block = \Drupal::entityTypeManager()
+    ->getStorage('block')
+    ->load('bloque_valores_auto');
+
+  if (!$existing_block) {
+
+  $block_2 = \Drupal\block\Entity\Block::create([
+    'id'         => 'bloque_valores_auto',
+    'plugin'     => 'bloque_valores',
+    'region'     => 'content',
+    'theme'      => $theme,
+    'weight'     => 0,
+    'visibility' => [
+    'request_path' => [
+      'id' => 'request_path',
+      'pages' => '/inicio',
+      'negate' => FALSE,
+      'context_mapping' => [],
+    ],
+  ],
+  ]);
+  $block_2->save();
+  }
+}

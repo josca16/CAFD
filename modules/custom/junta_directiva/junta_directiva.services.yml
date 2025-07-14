@@ -1,0 +1,8 @@
+services:
+  federaciones.manager:
+    class: Drupal\cafd_content\Services\FederacionesManager
+    arguments: ['@entity_type.manager']
+
+  junta_directiva.manager:
+    class: Drupal\cafd_content\Services\JuntaDirectivaManager
+    arguments: ['@database']

@@ -1,0 +1,17 @@
+<?php
+/**
+ * @file
+ * Módulo cafd_redessociales.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function cafd_redessociales_theme($existing, $type, $theme, $path) {
+  return [
+  'facebook_block' => [
+      'variables' => ['attributes' => []],
+      'template' => 'facebook-block',
+    ],
+  ];
+}

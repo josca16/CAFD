@@ -1,0 +1,65 @@
+.bloque-junta-resumen {
+  background-color: #f4f4f4; /* gris suave y moderno */
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.bloque-titulo {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.tarjetas-junta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  width: 100vw;
+}
+
+.tarjeta-junta {
+  background: transparent;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* Parte superior: imagen con fondo transparente */
+.imagen-junta {
+  background: transparent;
+}
+
+.imagen-junta img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+/* Parte inferior: información con fondo sólido */
+.contenido-junta {
+  background: #ffffff;
+  padding: 1rem;
+}
+
+.contenido-junta h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.contenido-junta p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+

@@ -1,0 +1,19 @@
+cafd_servicios.page:
+  path: '/servicios'
+  defaults:
+    _controller: '\Drupal\cafd_servicios\Controller\CafdServiciosController::page'
+    _title: 'Servicios' # Título de la página
+  requirements:
+    _permission: 'access content'
+
+cafd_servicios.get_detail:
+  path: '/cafd-servicios/get-detail/{servicio_id}'
+  defaults:
+    _controller: '\Drupal\cafd_servicios\Controller\CafdServiciosController::getServiceDetail'
+    _title: 'Get Service Detail'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      servicio_id:
+        type: string

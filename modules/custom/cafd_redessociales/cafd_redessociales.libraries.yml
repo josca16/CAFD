@@ -1,0 +1,24 @@
+facebook_sdk:
+  version: 1.0
+  js:
+    https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v22.0:
+      type: external
+      attributes:
+        async: true
+        defer: true
+        crossorigin: anonymous
+  dependencies:
+    - core/jquery
+
+instagram_embed:
+  version: 1.0
+  js:
+    https://www.instagram.com/embed.js:
+      type: external
+      attributes:
+        async: true
+        defer: true
+        crossorigin: anonymous
+  dependencies:
+    - core/jquery
+    - core/jquery

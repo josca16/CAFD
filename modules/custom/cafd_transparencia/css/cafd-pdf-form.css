@@ -1,0 +1,109 @@
+/* ============================================================
+   ARCHIVO: cafd-pdf-form.css
+   DESCRIPCIÓN: Estilos personalizados para el formulario CAFD PDF
+   ============================================================ */
+
+/* Contenedor principal del formulario */
+#cafd-pdf-form {
+  padding: 20px;
+  background-color: #f4f4f4;
+  border: 2px solid #003366;
+  border-radius: 8px;
+  max-width: 900px;
+  margin: 0 auto 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Títulos de campos */
+#cafd-pdf-form label {
+  font-weight: bold;
+  color: #003366;
+  margin-top: 10px;
+  display: block;
+}
+
+/* Campos de texto y select */
+#edit-title,
+#edit-nombre-grupo,
+#edit-categoria,
+#edit-peso {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+/* Campo de archivo */
+#edit-pdf-file {
+  margin-bottom: 12px;
+}
+
+/* Checkboxes */
+#edit-visible,
+#edit-agrupable {
+  margin-bottom: 12px;
+}
+
+/* Botón de envío */
+#edit-submit {
+  background-color: #003366;
+  color: #fff;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+}
+#edit-submit:hover {
+  background-color: #F9B80C;
+  color: black;
+}
+
+/* Tabla de PDFs listados */
+#edit-pdf-list {
+  width: 90%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+#edit-pdf-list th,
+#edit-pdf-list td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+#edit-pdf-list th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+#edit-pdf-list td a {
+  color: #003366;
+  text-decoration: underline;
+}
+
+#edit-pdf-list td a:hover {
+  color: #F9B80C;
+}
+
+/* Botones de eliminar en la tabla */
+#edit-pdf-list input[type="submit"] {
+  background: transparent;
+  border: 1px solid #cc0000;
+  color: #cc0000;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#edit-pdf-list input[type="submit"]:hover {
+  background-color: #cc0000;
+  color: #fff;
+}
+

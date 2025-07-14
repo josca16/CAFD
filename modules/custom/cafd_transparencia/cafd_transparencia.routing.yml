@@ -1,0 +1,41 @@
+cafd_transparencia.pdf_form:
+  path: '/admin/gestion'
+  defaults:
+    _form: '\Drupal\cafd_transparencia\Form\CafdPdfForm'
+    _title: 'Gestionar documentos PDF'
+  requirements:
+    _permission: 'administer site configuration'
+
+
+cafd_transparencia.listado_pdfs:
+  path: '/transparencia'
+  defaults:
+    _controller: '\Drupal\cafd_transparencia\Controller\CafdPdfController::listado'
+    _title: 'Listado de PDFs'
+  requirements:
+    _permission: 'access content'
+
+cafd_transparencia.edit_pdf:
+  path: '/admin/cafd-transparencia/pdf/{pdf_id}/edit'
+  defaults:
+    _form: '\Drupal\cafd_transparencia\Form\CafdPdfEditForm'
+    _title: 'Editar PDF'
+  requirements:
+    _permission: 'access content'
+
+# cafd_transparencia.routing.yml
+cafd_transparencia.confirm_delete:
+  path: '/transparencia/pdf/{pdf_id}/delete'
+  defaults:
+    _title: 'Confirmar eliminación'
+    _form: '\Drupal\cafd_transparencia\Form\ConfirmDeleteForm'
+  requirements:
+    _permission: 'administer site configuration'
+
+cafd_transparencia.delete_pdf:
+  path: '/transparencia/pdf/{pdf_id}/delete-ajax'
+  defaults:
+    _controller: '\Drupal\cafd_transparencia\Controller\CafdPdfController::deletePdf'
+    _title: 'Eliminar PDF'
+  requirements:
+    _permission: 'administer site configuration'

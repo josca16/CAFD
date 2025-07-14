@@ -1,0 +1,16 @@
+<div class="directiva">
+
+  <div class="tarjetas-junta">
+    {% for miembro in miembros %}
+      <div class="miembro">
+        <img src="{{ miembro.imagen ?: '/sites/default/files/imagenes/default.png' }}" alt="Imagen de {{ miembro.nombre }}">
+
+        <div class="info">
+          <h3 class="cargo">{{ miembro.cargo }} </h3>
+          <p class="nombre">{{ miembro.nombre }} </p>
+          <p class="institucion">{{ miembro.federacion }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

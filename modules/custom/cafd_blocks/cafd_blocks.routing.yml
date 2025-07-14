@@ -1,0 +1,7 @@
+cafd_blocks.frontpage:
+  path: '/inicio'
+  defaults:
+    _controller: '\Drupal\cafd_blocks\Controller\FrontPageController::content'
+    _title: 'Inicio'
+  requirements:
+    _permission: 'access content'

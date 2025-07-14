@@ -1,0 +1,41 @@
+<?php
+
+use Drupal\block\Entity\Block;
+
+/**
+ * Implements hook_install().
+ */
+function cafd_ui_install() {
+  $theme = 'custom_theme';
+
+
+  // Elimina las instancias de bloques que están colocadas en el header.
+  $blocks = \Drupal::entityTypeManager()->getStorage('block')->loadMultiple();
+
+foreach ($blocks as $block) {
+  if ($block->getTheme() === $theme && ($block->getRegion() === 'header' || $block->getRegion() === 'content')) {
+    $block->delete();
+  }
+}
+
+  $existing_block = \Drupal::entityTypeManager()
+    ->getStorage('block')
+    ->load('cafd_ui_navbar_block_instance');
+
+  if (!$existing_block) {
+
+
+  // Posiciona tu bloque personalizado "cafd_ui_navbar_block".
+  $navbar_block = Block::create([
+    'id' => 'cafd_ui_navbar_block_instance',
+    'plugin' => 'cafd_ui_navbar_block',
+    'region' => 'header',
+    'theme' => $theme,
+    'visibility' => [],
+    'settings' => [],
+    'weight' => 0,
+    'status' => 1,
+  ]);
+  $navbar_block->save();
+  }
+}

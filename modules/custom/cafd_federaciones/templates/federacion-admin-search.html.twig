@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the federacion admin search form.
+ *
+ * Available variables:
+ * - search: The current search term.
+ * - route_name: The route name to use for the form action.
+ */
+#}
+<div class="federacion-search-container">
+  <form method="get" class="federacion-admin-search-form">
+    <div class="form-item">
+      <label for="nombre">Buscar por nombre:</label>
+      <input type="text" id="nombre" name="nombre" value="{{ search|e }}" size="30" maxlength="64">
+      <input type="submit" value="Buscar" class="button button--primary">
+      {% if search %}
+        <a href="{{ path(route_name) }}" class="button">Limpiar búsqueda</a>
+      {% endif %}
+    </div>
+  </form>
+</div>

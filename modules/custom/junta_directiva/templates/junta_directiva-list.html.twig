@@ -1,0 +1,52 @@
+<div class="contenedor-junta">
+  <h1 class="titulo-junta">Listado de Junta Directiva</h1>
+
+  {% if nueva_url is defined and nueva_url %}
+    <div class="boton-contenedor">
+      <a href="{{ nueva_url }}" class="boton-nuevo">Añadir miembro</a>
+    </div>
+  {% endif %}
+
+  {% if mostrar_acciones %}
+    <table class="tabla-junta">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Cargo</th>
+          <th>Federación</th>
+          <th>Visibilidad</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for miembro in miembros %}
+          <tr>
+            <td>{{ miembro.id }}</td>
+            <td>{{ miembro.nombre }}</td>
+            <td>{{ miembro.cargo }}</td>
+            <td>{{ miembro.federacion }}</td>
+            <td>
+                {% if miembro.visibilidad == 'inicio' %}
+                  Solo en Inicio
+                {% elseif miembro.visibilidad == 'junta' %}
+                  Solo en Junta Directiva
+                {% else %}
+                  Ambos lugares
+                {% endif %}
+            </td>
+            <td>{{ miembro.edit_link }}</td>
+            <td>{{ miembro.delete_link }}</td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="6">No hay miembros registrados.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No tienes permiso para ver esta información.</p>
+  {% endif %}
+</div>

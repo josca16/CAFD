@@ -1,0 +1,5 @@
+name: 'CAFD Redes Sociales'
+type: module
+description: 'Muestra el feed de la página de Facebook de CAFD como página y bloque.'
+core_version_requirement: ^10
+package: Custom

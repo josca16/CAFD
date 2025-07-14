@@ -1,0 +1,7 @@
+cafd_colabs.styles:
+  version: 1.x
+  css:
+    theme:
+      css/colaboradores.css: {}
+  dependencies:
+    - core/drupal

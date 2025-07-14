@@ -1,0 +1,141 @@
+<?php
+use Drupal\Core\Database\Database;
+use Drupal\file\Entity\File;
+/**
+ * Implementa hook_schema().
+ */
+function cafd_transparencia_schema() {
+  $schema['cafd_pdfs'] = [
+    'description' => 'Tabla para almacenar PDFs categorizados.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'title' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'fid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'categoria' => [
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+      ],
+      'peso' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'visible' => [
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 1,
+      ],
+      'destacado' => [
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'agrupable' => [
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Indica si el PDF debe mostrarse agrupado',
+      ],
+      'nombre_grupo' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Nombre del grupo si es agrupable',
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'fid' => ['fid'],
+      'categoria' => ['categoria'],
+    ],
+  ];
+  return $schema;
+}
+/**
+ * Implementa hook_install().
+ */
+function cafd_transparencia_install() {
+  $database = \Drupal::database();
+  $schema = cafd_transparencia_schema();
+  if (!$database->schema()->tableExists('cafd_pdfs')) {
+    $database->schema()->createTable('cafd_pdfs', $schema['cafd_pdfs']);
+  }
+  $file_system = \Drupal::service('file_system');
+  $messenger = \Drupal::messenger();
+  $dir = 'public://cafd_pdfs';
+  $filename = 'Ejemplo.pdf';
+  $filepath = $dir . '/' . $filename;
+  // Crear directorio si no existe
+  if (!file_exists($file_system->realpath($dir))) {
+    $file_system->prepareDirectory($dir, \Drupal\Core\File\FileSystemInterface::CREATE_DIRECTORY | \Drupal\Core\File\FileSystemInterface::MODIFY_PERMISSIONS);
+    $messenger->addStatus(t('Directorio @dir creado.', ['@dir' => $dir]));
+  }
+  // Verificar si el archivo existe
+  if (!file_exists($file_system->realpath($filepath))) {
+    $messenger->addError(t('No se encontró el archivo @file. Asegúrate de que exista antes de instalar.', ['@file' => $filepath]));
+    return;
+  } else {
+    $messenger->addStatus(t('Archivo encontrado en @path.', ['@path' => $filepath]));
+  }
+  // Verificar si el archivo ya está registrado
+  $fid = $database->select('file_managed', 'f')
+    ->fields('f', ['fid'])
+    ->condition('uri', $filepath)
+    ->execute()
+    ->fetchField();
+  if (!$fid) {
+    // Registrar el archivo con la API de entidades
+    $file = File::create([
+      'uri' => $filepath,
+      'status' => 1,
+      'uid' => 1,
+      'langcode' => \Drupal::languageManager()->getDefaultLanguage()->getId(),
+    ]);
+    $file->save();
+    $fid = $file->id();
+    $messenger->addStatus(t('Archivo @file registrado con fid @fid.', ['@file' => $filename, '@fid' => $fid]));
+  } else {
+    $messenger->addStatus(t('Archivo @file ya estaba registrado con fid @fid.', ['@file' => $filename, '@fid' => $fid]));
+  }
+  // Categorías
+  $categorias = [
+    'Estructura Organizativa',
+    'Datos Económicos',
+    'Normativa',
+    'Actividades',
+  ];
+  foreach ($categorias as $categoria) {
+    for ($i = 1; $i <= 6; $i++) {
+      $agrupable = 1;
+      $nombre_grupo = "Grupo {$categoria}";
+      $database->insert('cafd_pdfs')
+        ->fields([
+          'title' => "Documento $i",
+          'fid' => $fid,
+          'categoria' => $categoria,
+          'peso' => $i,
+          'visible' => 1,
+          'destacado' => ($i === 1 ? 1 : 0),
+          'agrupable' => $agrupable,
+          'nombre_grupo' => $nombre_grupo,
+        ])
+        ->execute();
+    }
+  }
+  $messenger->addStatus(t('Datos de prueba insertados en cafd_pdfs.'));
+}

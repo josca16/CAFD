@@ -1,0 +1,33 @@
+/* Para los logos */
+.colaboradores-list.colaboradores-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  justify-content: center;
+}
+
+.colaboradores-list.colaboradores-logos li {
+  /* Mejor usar flex item y control de tamaño fijo para que no se estiren */
+  display: flex; /* o block si usas solo imágenes */
+  justify-content: center;
+  align-items: center;
+  width: 150px; /* o el ancho que quieras */
+  /* padding o margin opcional */
+}
+
+/* Para los nombres */
+.colaboradores-list.colaboradores-nombres ul {
+  list-style-type: none;
+  padding-left: 20px;
+  margin-top: 15px;
+  margin-left: 0;
+  background-color: none;
+}
+
+.colaboradores-list.colaboradores-nombres li {
+  margin-bottom: 8px;
+  display: list-item;
+}

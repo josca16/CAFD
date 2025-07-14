@@ -1,0 +1,37 @@
+services:
+  drupal:
+    image: drupal:10
+    container_name: cafd_drupal
+    ports:
+      - "8080:80"
+    volumes:
+      - ./modules:/var/www/html/modules
+      - ./themes:/var/www/html/themes
+      - ./profiles:/var/www/html/profiles
+      - ./sites:/var/www/html/sites
+    depends_on:
+      - db
+    entrypoint: >
+      sh -c "composer require drush/drush &&
+      if ! drush status --fields=bootstrap | grep -q Successful; then
+        drush site-install standard --db-url=mysql://drupal:drupal@db/drupal --site-name='CAFD - Confederación Andaluza de Federaciones Deportivas' --account-name=admin --account-pass=admin -y;
+      fi &&
+      apache2-foreground"
+  db:
+    image: mariadb:10.6
+    container_name: cafd_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+volumes:
+  drupal_modules:
+  drupal_profiles:
+  drupal_themes:
+  drupal_sites:
+  db_data:

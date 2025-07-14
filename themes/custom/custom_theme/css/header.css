@@ -1,0 +1,50 @@
+/* ============================================================
+   Archivo: header.css
+   Descripción: Estilos CSS para el header del tema personalizado.
+   Incluye la imagen de fondo, el logo y su comportamiento responsive.
+   ============================================================ */
+
+/* Estilos generales del header */
+.custom-header {
+    background-image: url('../images/Header_BG.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+/* Estilo para el logo y el texto */
+.custom-header .logo {
+    max-width: 400px; /* Tamaño máximo del logo en pantallas grandes */
+    width: 100%; /* Se ajusta al 100% de su contenedor */
+    height: auto; /* Mantiene la proporción */
+    margin-right: 20px;
+    transition: max-width 0.3s ease; /* Transición suave al cambiar de tamaño */
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+/* Tablets (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .custom-header .logo {
+        max-width: 250px; /* El logo se reduce en pantallas medianas */
+    }
+}
+
+/* Móviles (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .custom-header {
+        padding: 0 15px;
+    }
+
+    .custom-header .logo {
+        max-width: 180px; /* El logo se ajusta aún más para móviles */
+    }
+
+}

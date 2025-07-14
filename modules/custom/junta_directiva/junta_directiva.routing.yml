@@ -1,0 +1,34 @@
+junta_directiva.form:
+  path: '/equipo/nuevo'
+  defaults:
+    _form: '\Drupal\junta_directiva\Form\JuntaDirectivaForm'
+    _title: 'Nueva miembro'
+  requirements:
+    _permission: 'administer site configuration'
+
+junta_directiva.list:
+  path: '/equipo'
+  defaults:
+    _controller: '\Drupal\junta_directiva\Controller\JuntaDirectivaController::listado_junta'
+  requirements:
+    _permission: 'access content'
+
+junta_directiva_edit:
+  path: '/equipo/edit/{id}'
+  defaults:
+    _form: '\Drupal\junta_directiva\Form\JuntaDirectivaForm'
+    _title: 'Editar miembro de la Junta'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      id:
+        type: 'numeric'
+
+junta_directiva_delete:
+  path: '/equipo/{id}/eliminar'
+  defaults:
+    _form: '\Drupal\junta_directiva\Form\JuntaDirectivaDeleteForm'
+    _title: 'Eliminar miembro'
+  requirements:
+    _permission: 'administer site configuration'

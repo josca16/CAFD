@@ -1,0 +1,7 @@
+name: 'Junta Directiva'
+type: module
+description: 'Gestion de miembros de la junta directiva'
+core_version_requirement: ^9 || ^10
+package: Custom
+dependencies: []
+

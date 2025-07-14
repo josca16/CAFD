@@ -1,0 +1,12 @@
+cafd_estadisticas_styles:
+  version: 1.x
+  css:
+    theme:
+      css/front-page.css: {}
+
+countup:
+  version: 1.x
+  js:
+    https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.6.2/countUp.umd.js: { type: external, minified: true }
+    js/estadisticas-countup.js: {}
+  dependencies:

@@ -1,0 +1,42 @@
+# Drupal core
+/core
+/vendor
+
+# Configuración local, no versionar settings personalizados
+/sites/default/settings.local.php
+
+# Archivo settings.php (versionar solo si quieres, si no ignorar)
+/sites/default/settings.php
+
+# Archivos de caché y temporales
+/sites/default/files/
+/sites/default/files/php/
+/sites/default/files/php/twig/
+
+/sites/simpletest/
+/sites/simpletest/*
+
+# Archivos temporales y logs
+*.log
+*.tmp
+*.temp
+
+# Archivos de sistema OS
+.DS_Store
+Thumbs.db
+
+# Composer dependencies (si usas composer)
+/vendor/
+/composer.lock
+
+# Archivos de editor
+.vscode/
+.idea/
+*.swp
+
+# Otros archivos temporales
+*.cache
+*.bak
+*.backup
+*.orig
+*.old

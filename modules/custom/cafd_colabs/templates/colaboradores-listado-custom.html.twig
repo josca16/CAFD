@@ -1,0 +1,14 @@
+
+
+
+  <ul class="colaboradores-nombres">
+    {% for c in colaboradores %}
+      <li class="colaborador-item">
+        <strong>{{ c.nombre }}</strong> — 
+        <a href="{{ c.edit_url }}">Editar</a> |
+        <a href="{{ c.delete_url }}">Eliminar</a>
+      </li>
+    {% else %}
+      <li>No hay colaboradores registrados.</li>
+    {% endfor %}
+  </ul>

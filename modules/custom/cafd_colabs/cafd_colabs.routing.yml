@@ -1,0 +1,43 @@
+# Listado de colaboradores
+cafd_colabs.list:
+  path: '/colaboradores'
+  defaults:
+    _controller: '\Drupal\cafd_colabs\Controller\ColaboradoresController::listar'
+    _title: 'Listado de colaboradores'
+  requirements:
+    _permission: 'access content'
+
+# Formulario para agregar colaborador
+cafd_colabs.colaborador_form:
+  path: '/colaboradores/add'
+  defaults:
+    _form: '\Drupal\cafd_colabs\Form\ColaboradorForm'
+    _title: 'Añadir colaborador'
+  requirements:
+    _permission: 'administer site configuration'
+
+# Formulario para editar colaborador
+cafd_colabs.colaborador_edit:
+  path: '/colaboradores/{id}/edit'
+  defaults:
+    _form: '\Drupal\cafd_colabs\Form\ColaboradorEditForm'
+    _title: 'Editar colaborador'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    parameters:
+      id:
+        type: 'integer'
+
+# Formulario para eliminar colaborador
+cafd_colabs.colaborador_delete:
+  path: '/colaboradores/{id}/delete'
+  defaults:
+    _form: '\Drupal\cafd_colabs\Form\ColaboradorDeleteForm'
+    _title: 'Eliminar colaborador'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    parameters:
+      id:
+        type: 'integer'

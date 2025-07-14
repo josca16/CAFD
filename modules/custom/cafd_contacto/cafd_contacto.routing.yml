@@ -1,0 +1,7 @@
+cafd_contacto.contact_page:
+  path: '/contacto' # Cambiamos la URL para que sea más específica
+  defaults:
+    _controller: '\Drupal\cafd_contacto\Controller\CafdContactoPageController::contactPage'
+    _title: 'Contáctanos (CAFD)'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,31 @@
+<div class="junta-block">
+  <div class="Equipo-imagen">
+    <img src="/themes/custom/custom_theme/images/equipo.png" alt="Imagen Equipo CAFD">
+  </div>
+  <div class="junta-texto">
+    <div class="swiper junta-swiper">
+      <h2 class="titulo-junta">Nuestro Equipo</h2>
+      <div class="swiper-wrapper">
+        {% for miembro in miembros %}
+          <div class="swiper-slide slide-miembro">
+            <div class="miembro-grid">
+              <div class="miembro-imagen-seccion">
+                <img src="{{ miembro.imagen ?: '/sites/default/files/imagenes/default.png' }}" alt="{{ miembro.nombre }}" class="imagen-miembro">
+              </div>
+              <div class="miembro-info-seccion">
+                <h3 class="nombre-miembro">{{ miembro.nombre }}</h3>
+                <p class="cargo-miembro">{{ miembro.cargo }}</p>
+              </div>
+              
+            </div>
+          </div>
+        {% endfor %}
+        
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+    <a href="/equipo" class="boton-ver-organigrama">CONSULTAR ORGANIGRAMA</a>
+  </div>
+</div>

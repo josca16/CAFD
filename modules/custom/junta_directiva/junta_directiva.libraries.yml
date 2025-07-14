@@ -1,0 +1,41 @@
+formulario_junta:
+  version: 1.x
+  css:
+    theme:
+      css/formulario_junta.css: {}
+
+listado_junta:
+  version: 1.x
+  css:
+    theme:
+      css/junta_directiva.css: {}
+
+bloque_directiva:
+  version: 1.x
+  css:
+    theme:
+      css/bloque_directiva.css: {}
+
+bloque_inicio:
+  version: 1.x
+  css:
+    theme:
+      css/bloque_inicio.css: {}
+
+swiper:
+  css:
+    theme:
+      libraries/swiper/swiper-bundle.min.css: {}
+  js:
+    libraries/swiper/swiper-bundle.min.js: {}
+  dependencies:
+    - core/drupal
+
+swiper_inicio:
+  css:
+    theme:
+      css/swiper_inicio.css: {}
+  js:
+    js/swiper_inicio.js: {}
+  dependencies:
+    - junta_directiva/swiper

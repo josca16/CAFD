@@ -1,0 +1,5 @@
+name: 'CAFD Formación'
+type: module
+description: 'Página de Aula Virtual de CAFD'
+core_version_requirement: ^8 || ^9 || ^10
+package: Custom

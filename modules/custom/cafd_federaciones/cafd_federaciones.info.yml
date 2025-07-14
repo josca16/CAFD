@@ -1,0 +1,7 @@
+name: 'Cafd_Federaciones'
+type: module
+description: 'Contenido personalizado para cafd_federaciones'
+core_version_requirement: ^9 || ^10
+package: Custom
+dependencies: []
+

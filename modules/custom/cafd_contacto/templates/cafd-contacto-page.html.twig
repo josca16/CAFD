@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the CAFD contact page.
+ *
+ * Available variables:
+ * - contact_info: Array of contact information (visit_us, email_us, call_us).
+ * - contact_form: Render array for the contact form.
+ * - map_embed_code: Raw HTML string for the Google Maps embed.
+ *
+ * @see template_preprocess_cafd_contacto_page() (if you create a preprocess function)
+ * @see cafd_contacto.module (for hook_theme definition)
+ */
+#}
+<div class="cafd-contacto-page"> {# Updated class name #}
+
+  {# Sección Superior de Información #}
+  <div class="contact-info-header">
+    {% if contact_info.visit_us %}
+      <div class="contact-info-item">
+        <div class="icon-placeholder">📍</div>
+        <h3>{{ contact_info.visit_us.title }}</h3>
+        <p>{{ contact_info.visit_us.address }}</p>
+      </div>
+    {% endif %}
+
+    {% if contact_info.email_us %}
+      <div class="contact-info-item">
+        <div class="icon-placeholder">✉️</div>
+        <h3>{{ contact_info.email_us.title }}</h3>
+        <p><a href="mailto:{{ contact_info.email_us.email }}">{{ contact_info.email_us.email }}</a></p>
+      </div>
+    {% endif %}
+
+    {% if contact_info.call_us %}
+      <div class="contact-info-item">
+        <div class="icon-placeholder">📞</div>
+        <h3>{{ contact_info.call_us.title }}</h3>
+        <p>{{ contact_info.call_us.phone }}</p>
+      </div>
+    {% endif %}
+  </div>
+
+  {# Sección Principal: Formulario y Mapa #}
+  <div class="contact-main-section">
+    <div class="contact-form-container">
+      <h2>Mándanos un mensaje</h2>
+      {{ contact_form }}
+    </div>
+    <div class="map-container">
+      {{ map_embed_code|raw }}
+    </div>
+  </div>
+
+</div>

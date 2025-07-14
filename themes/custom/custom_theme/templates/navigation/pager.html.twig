@@ -1,0 +1,66 @@
+{# Archivo: custom_theme/templates/navigation/pager.html.html #}
+{% if items %}
+  <nav class="paginacion-federaciones" role="navigation" aria-label="Paginación de federaciones">
+    <ul class="pager">
+
+      {# Primera página « #}
+      {% if items.first %}
+        <li>
+          <a href="{{ items.first.href }}" title="Primera página" aria-label="Primera página">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 28 24" stroke-width="3" stroke="currentColor" width="22" height="20">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 4.5L14.25 12l7.5 7.5" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 4.5L8.25 12l7.5 7.5" />
+            </svg>
+          </a>
+        </li>
+      {% endif %}
+
+      {# Página anterior ‹ #}
+      {% if items.previous %}
+        <li>
+          <a href="{{ items.previous.href }}" title="Página anterior" aria-label="Página anterior">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6.5L8.25 12l7.5 5.5" />
+            </svg>
+          </a>
+        </li>
+      {% endif %}
+
+      {# Números de página #}
+      {% for key, item in items.pages %}
+        <li class="{{ item.current ? 'pager__item--current' : '' }}">
+          {% if item.current %}
+            <span>{{ key }}</span>
+          {% else %}
+            <a href="{{ item.href }}">{{ key }}</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+
+      {# Página siguiente › #}
+      {% if items.next %}
+        <li>
+          <a href="{{ items.next.href }}" title="Página siguiente" aria-label="Página siguiente">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.5L15.75 12l-7.5 5.5" />
+            </svg>
+          </a>
+        </li>
+      {% endif %}
+
+      {# Última página » #}
+      {% if items.last %}
+        <li>
+          <a href="{{ items.last.href }}" title="Última página" aria-label="Última página">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 28 24" stroke-width="3" stroke="currentColor" width="22" height="20">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.25 4.5L13.75 12l-7.5 7.5" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12.25 4.5L19.75 12l-7.5 7.5" />
+            </svg>
+
+          </a>
+        </li>
+      {% endif %}
+
+    </ul>
+  </nav>
+{% endif %}

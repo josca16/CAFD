@@ -1,0 +1,139 @@
+<?php
+
+use Drupal\Core\File\FileSystemInterface;
+use Drupal\file\Entity\File;
+
+/**
+ * Implements hook_schema().
+ */
+function cafd_colabs_schema() {
+  $schema['colaboradores'] = [
+    'description' => 'Tabla que almacena datos de colaboradores.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'ID del colaborador.',
+      ],
+      'nombre' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Nombre del colaborador.',
+      ],
+      'logo_fid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'description' => 'ID del archivo del logo (fid).',
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function cafd_colabs_install() {
+  $file_system = \Drupal::service('file_system');
+  $directory = 'public://colaboradores/';
+  $file_system->prepareDirectory($directory, FileSystemInterface::CREATE_DIRECTORY);
+
+  $nombres = [
+    'audidat',
+    'beiman',
+    'cesur',
+    'cufade',
+    'delSol',
+    'junta',
+    'montero',
+    'saludDeporte',
+    'santander',
+    'unifedan',
+  ];
+
+  foreach ($nombres as $nombre) {
+    $filename = $nombre . '.png';
+    $source_path = __DIR__ . '/assets/logos/' . $filename; // <-- Ruta corregida
+    $destination_uri = $directory . $filename;
+    $destination_real_path = $file_system->realpath($destination_uri);
+
+    if (file_exists($source_path)) {
+      // Copiar el archivo desde assets/logos al sistema de archivos público.
+      file_put_contents($destination_real_path, file_get_contents($source_path));
+
+      // Crear la entidad de archivo y marcarla como permanente.
+      $file = File::create([
+        'uri' => $destination_uri,
+        'status' => 1,
+      ]);
+      $file->setPermanent();
+      $file->save();
+
+      // Insertar el registro del colaborador con su logo.
+      \Drupal::database()->insert('colaboradores')
+        ->fields([
+          'nombre' => ucfirst($nombre),
+          'logo_fid' => $file->id(),
+        ])
+        ->execute();
+    }
+  }
+
+  // Posicionar los bloques en la región 'content' del tema activo
+  $theme = \Drupal::config('system.theme')->get('default');
+
+$existing_block = \Drupal::entityTypeManager()
+    ->getStorage('block')
+    ->load('bloque_colabs_auto');
+
+  if (!$existing_block) {
+
+  $block_1 = \Drupal\block\Entity\Block::create([
+    'id'         => 'bloque_colabs_auto',
+    'plugin'     => 'colaboradores_block',
+    'region'     => 'content',
+    'theme'      => $theme,
+    'weight'     => 4,
+    'visibility' => [
+    'request_path' => [
+      'id' => 'request_path',
+      'pages' => '/inicio',
+      'negate' => FALSE,
+      'context_mapping' => [],
+    ],
+  ],
+  ]);
+  $block_1->save();
+  }
+
+  $existing_block = \Drupal::entityTypeManager()
+    ->getStorage('block')
+    ->load('bloque_colabs2_auto');
+
+  if (!$existing_block) {
+
+
+
+  $block_2 = \Drupal\block\Entity\Block::create([
+    'id'         => 'bloque_colabs2_auto',
+    'plugin'     => 'colaborador_form_block',
+    'region'     => 'content',
+    'theme'      => $theme,
+    'weight'     => 5,
+    'visibility' => [
+    'request_path' => [
+      'id' => 'request_path',
+      'pages' => '/inicio',
+      'negate' => FALSE,
+      'context_mapping' => [],
+    ],
+  ],
+    
+  ]);
+  $block_2->save();
+  }
+}

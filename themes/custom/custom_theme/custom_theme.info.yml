@@ -1,0 +1,19 @@
+name: 'Custom Theme'
+type: theme
+description: 'Subtema basado en Olivero optimizado para frontend.'
+core_version_requirement: ^10
+base theme: olivero
+package: Custom Themes
+libraries:
+ - custom_theme/global-styling
+ - custom_theme/front-page
+ - custom_theme/equipo
+ - custom_theme/aula_virtual
+ - custom_theme/transparencia
+
+regions:
+  header: 'Header'
+  content: 'Content'
+  footer: 'Footer'
+
+hidden: false

@@ -1,0 +1,217 @@
+/* ============================================================
+    Archivo: footer.css
+    Descripción: Estilos CSS para el footer del sitio.
+    Estructura:
+    1. Estilos generales
+    2. Columnas (Logo, Redes Sociales, Contacto)
+    3. Política y contacto
+    4. Copyright
+    5. Responsividad
+============================================================ */
+
+/* ============================================================
+   1. Estilos Generales
+============================================================ */
+
+/* Contenedor principal del footer */
+.footer {
+  background-color: #092840; /* Color de fondo azul oscuro */
+  color: white;              /* Texto en blanco por defecto */
+  padding: 20px 0;           /* Espaciado vertical arriba y abajo */
+}
+
+/* Contenedor interior del footer en disposición horizontal */
+.footer__container {
+  display: flex;                    /* Usamos flexbox para distribuir las columnas */
+  justify-content: space-between;   /* Espacio equitativo entre columnas */
+  align-items: center;              /* Centrado vertical de los elementos */
+  margin: 0 auto;                   /* Centra el contenedor horizontalmente */
+  gap: 20px;                        /* Separación entre columnas */
+}
+
+/* ============================================================
+   2. Columnas del Footer
+============================================================ */
+
+.footer__logo-column {
+  flex: 1;                        /* Ocupa una parte igual del espacio */
+  min-width: 300px;              /* Asegura un ancho mínimo */
+  display: flex;                 /* Activa flexbox para centrar */
+  justify-content: center;       /* Centra el contenido horizontalmente */
+  height: 100%;                  /* Altura completa de la columna */
+}
+
+.footer__logo {
+  max-width: 300px;             /* Limita el tamaño máximo del logo */
+}
+
+.footer__column-links {
+  flex: 1;                      /* Igual espacio que las otras columnas */
+  min-width: 300px;            /* Asegura visibilidad mínima */
+}
+
+.footer__links-rrss {
+  display: flex;               /* Distribuye iconos horizontalmente */
+  gap: 15px;                   /* Espacio entre iconos */
+  justify-content: center;     /* Centrado horizontal */
+}
+
+.social__icon-img {
+  width: 70px;                 /* Ancho fijo del icono */
+  height: 70px;                /* Alto fijo del icono */
+  transition: all 0.3s ease;   /* Transición suave en hover */
+}
+
+.social__icon-img:hover {
+  /* Aquí se puede aplicar un efecto al pasar el ratón */
+}
+
+.footer__column-info {
+  flex: 1;                     /* Ocupa una parte igual del espacio */
+  min-width: 400px;           /* Ancho mínimo para contener texto */
+  display: flex;              /* Flexbox para distribuir los elementos */
+  flex-direction: column;     /* Coloca los elementos uno debajo de otro */
+  align-items: center;        /* Centra el contenido horizontalmente */
+}
+
+.footer__contact-item {
+  display: flex;              /* Muestra el icono y el texto en línea */
+  align-items: center;        /* Alinea verticalmente ambos elementos */
+  margin-bottom: 5px;         /* Espaciado inferior entre elementos */
+}
+
+.footer__contact-email {
+  margin-right: 17.7rem;      /* Ajusta margen derecho para alinear */
+}
+
+.footer__contact-tlf {
+  margin-right: 17.8rem;      /* Ligeramente diferente para ajuste visual */
+}
+
+.footer__icon-info {
+  width: 20px;                /* Tamaño del icono */
+  height: 20px;
+  margin-right: 8px;          /* Separación del icono respecto al texto */
+}
+
+/* ============================================================
+   3. Enlaces de Política de Privacidad y Contacto
+============================================================ */
+
+.footer__links-politicaContacto {
+  display: flex;              /* Flexbox para alinear enlaces */
+  gap: 15px;                  /* Espacio entre ellos */
+  justify-content: center;    /* Centrado horizontal */
+  margin-top: 10px;           /* Espaciado superior respecto a RRSS */
+}
+
+.footer__links-politicaContacto a {
+  color: white;               /* Enlaces en blanco */
+  text-decoration: none;     /* Sin subrayado */
+  position: relative;        /* Necesario para el efecto ::after */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+.footer__links-politicaContacto a::after {
+  content: "";                /* Pseudo-elemento para la línea */
+  display: block;
+  width: 0;                  /* Comienza oculto */
+  height: 2px;
+  background-color: #ffcc00; /* Color amarillo */
+  transition: width 0.3s;    /* Transición de crecimiento */
+  position: absolute;
+  bottom: -3px;              /* Posición debajo del enlace */
+  left: 0;
+}
+
+.footer__links-politicaContacto a:hover::after {
+  width: 100%;               /* Efecto expandido al hacer hover */
+}
+
+/* ============================================================
+   4. Sección de Copyright
+============================================================ */
+
+.footer__bottom {
+  color: #586F7F;             /* Color gris azulado */
+  text-align: center;         /* Centrado del texto */
+  margin-top: 10px;           /* Espacio superior */
+  font-size: 0.9rem;          /* Tamaño de fuente reducido */
+}
+
+/* ============================================================
+   5. Responsividad (media queries)
+============================================================ */
+
+@media screen and (max-width: 1100px) {
+  .footer__container {
+    flex-direction: row;          /* Mantiene horizontal pero con ajustes */
+    justify-content: space-around; /* Alineación uniforme */
+  }
+  .footer__column-info {
+    display: none;               /* Oculta info de contacto */
+  }
+  .footer__logo-column,
+  .footer__column-links {
+    min-width: 45%;              /* Reduce el mínimo para mejor adaptación */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer__container {
+    flex-direction: row;          /* Mantiene horizontal */
+    justify-content: space-around;
+  }
+  .footer__column-info {
+    display: none;               /* Oculta contacto */
+  }
+  .footer__logo-column,
+  .footer__column-links {
+    min-width: auto;             /* Se adaptan al contenido */
+  }
+  .footer__links-rrss {
+    display: flex;
+    gap: 5px;                    /* Menor separación entre iconos */
+    justify-content: center;
+  }
+  .footer__links-politicaContacto {
+    flex-direction: column;      /* Coloca enlaces en columna */
+    align-items: center;         /* Centra elementos */
+    gap: 5px;                    /* Espaciado vertical */
+  }
+  .footer__links-politicaContacto .separator {
+    display: none;               /* Oculta separador visual */
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .footer__container {
+    flex-direction: column;      /* Cambia a disposición vertical */
+    align-items: center;         /* Centra todo el contenido */
+    gap: 15px;                   /* Espaciado entre columnas */
+  }
+  .footer__logo-column {
+    margin-bottom: 10px;         /* Espacio inferior en logo */
+  }
+  .footer__logo {
+    max-width: 250px;            /* Logo más pequeño para pantallas chicas */
+  }
+  .footer__links-rrss {
+    justify-content: center;     /* Centrado de iconos */
+  }
+  .social__icon-img {
+    width: 55px;                 /* Iconos más pequeños */
+    height: 55px;
+    transition: 0.3s;
+  }
+  .footer__links-politicaContacto {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;             /* Fuente más pequeña */
+  }
+  .footer__column-info {
+    display: none;               /* Oculta columna de contacto */
+  }
+}
+

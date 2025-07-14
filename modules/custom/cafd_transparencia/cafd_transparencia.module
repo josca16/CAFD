@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Código principal del módulo cafd_transparencia.
+ */
+
+/**
+ * Implements hook_page_attachments().
+ */
+function cafd_transparencia_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'cafd_transparencia/admin_menu_icon';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function cafd_transparencia_theme($existing, $type, $theme, $path) {
+  return [
+    'block--cafd-pdf-block' => [
+      'variables' => ['categorias' => []],
+      'template' => 'block--cafd-pdf-block',
+    ],
+  ];
+}

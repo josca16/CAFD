@@ -1,0 +1,582 @@
+/*
+
+CSS para la página de inicio
+ *
+ * Este archivo contiene estilos CSS para la página de inicio del tema personalizado.
+ *
+ * @package custom_theme
+ * @subpackage front-page
+ * @since 1.0.0
+ *
+
+*/
+
+
+
+
+   /* === Sección contenido === */
+
+  .front-content {
+    max-width: 1200px;
+    margin: 0 auto;
+
+  }
+
+  .node.node--type-page.node--view-mode-full,
+  .region--content {
+    margin-block-end: 0;
+  }
+
+  .views-element-container.contextual-region,
+  .contextual-region.node.node--type-page.node--view-mode-full {
+    display: none;
+  }
+
+
+     /* === que los bloques se ajusten a la pantalla  === */
+  .bloque-valores,
+  .bloque-estadisticas,
+  .bloque-ventajas,
+  .bloque-equipo,
+  .bloque-colaboradores,
+  .bloque-redes-sociales {
+    width: 100vw;
+    margin-left: -50vw;
+    margin-block-end: -54px;
+    left: 50%;
+    position: relative;
+    box-sizing: border-box;
+    padding: 3rem 2rem;
+  }
+
+   /* ===  Nuestros Valores  === */
+
+  .bloque-valores {
+    width: 100vw;
+    margin-left: -50vw;
+    left: 50%;
+    position: relative;
+    background-color: #eaf6ff;
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .bloque-valores h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #002f6c;
+    margin-bottom: 2rem;
+    margin-top: 0px;
+  }
+
+  .value-icons {
+    display: flex;
+    justify-content: center;
+    gap: 6rem;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+
+    margin: 0;
+  }
+
+  .value-icons li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 120px;
+    text-align: center;
+    font-weight: bold;
+    color: #002f6c;
+    font-size: 1rem;
+  }
+
+  .value-icons img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 0.5rem;
+    object-fit: contain;
+  }
+  
+  @media screen and (max-width: 768px) {
+  .value-icons {
+    gap: 3rem; /* Reduce el espacio entre los íconos en la versión móvil */
+  }
+
+
+
+
+}
+  
+   /* === Seccion Estadísticas === */
+
+  .block-bloque-estadisticas {
+    margin-block-end: 1.5rem;
+  }
+
+  .bloque-estadisticas {
+    background-color: #ffffff;
+    padding: 3rem 2rem;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100vw;
+    margin-left: -50vw;
+    left: 50%;
+    position: relative;
+  }
+
+  .bloque-estadisticas div {
+    font-size: 1.2rem;
+    margin: 1rem;
+    flex: 1 1 25%; /* Adjust the percentage as needed */
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .bloque-estadisticas strong
+  {
+    font-size: 2rem;
+  }
+
+  .estadistica-numero {
+    font-size: 2.6rem;
+  }
+
+  
+  
+  /* === Ventajas CAFD === */
+
+  .bloque-ventajas {
+    width: 100vw;
+    margin-left: -50vw;
+    left: 50%;
+    position: relative;
+    box-sizing: border-box;
+    background-color: #eaf6ff;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+
+  }
+
+  .ventajas-contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap; /* responsive */
+    /*gap: 2rem;*/
+  }
+
+  .ventajas-texto {
+    flex: 1;
+    padding : 2rem;
+  }
+
+  .ventajas-texto h2 {
+    font-size: 2rem;
+    color: #f5a623;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .ventajas-texto p {
+    font-size: 1.1rem;
+    color: #222;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .ventajas-texto img {
+    width: 70%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 36px;
+  }
+
+  .ventajas-imagen {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ventajas-imagen img {
+    width: 100%;
+    height: 100%;
+    max-height: 384px;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  }
+
+.ventajas-contenido > .ventajas-texto,
+.ventajas-contenido > .ventajas-imagen {
+    flex: 1 1 50%;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1000px) {
+  .ventajas-contenido {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .ventajas-imagen img {
+    height: 220px;
+  }
+
+}
+
+
+  /* === Nuestro Equipo === */
+
+.block-junta-directiva-inicio-block {
+  width: 100vw;
+  margin-left: -50vw;
+  left: 50%;
+  position: relative;
+  background-color: #eaf6ff;
+  padding-block-end: 0;
+  text-align: center;
+  margin-block-end: -54px;
+
+}
+
+.junta-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0;
+  align-items: center;
+  background-color: #eaf6ff;
+}
+
+.Equipo-imagen {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Equipo-imagen img {
+  width: 100%;
+  height: 494px;
+  object-fit: cover;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.junta-texto {
+  padding-bottom: 2rem;
+}
+
+.swiper.junta-swiper {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  padding-top: 1rem;
+  flex: 1;
+}
+
+.titulo-junta {
+  font-size: 2rem;
+  color: #002f6c;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.swiper-wrapper {
+  width: 100%;
+}
+
+.slide-miembro {
+  padding: 1rem;
+  text-align: center;
+}
+
+.miembro-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.imagen-miembro {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.nombre-miembro {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.cargo-miembro {
+  color: #666;
+  margin: 0;
+}
+
+/* Estilos para los controles del swiper */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #333;
+}
+
+.swiper-pagination-horizontal {
+
+  padding-bottom: 1rem;
+}
+
+.swiper-pagination-bullet-active {
+  background: #333;
+}
+
+.boton-ver-organigrama {
+
+  background-color: #002f6c;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.boton-ver-organigrama:hover {
+  background-color: #004499;
+}
+
+/* Estilos responsivos */
+@media screen and (max-width: 1000px) {
+  .junta-block {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .Equipo-imagen {
+    order: 2;
+    width: 100dvw;
+  }
+
+  .Equipo-imagen img {
+    height: 220px;
+  }
+
+  .junta-swiper {
+    order: 1;
+  }
+
+  .junta-texto {
+    width: 100vw;
+  }
+}
+
+
+  /* === Colaboradores === */
+
+  .block-cafd-colabs.block-colaboradores-block {
+    margin-top: 0;
+    padding-top: 0;
+    margin-block-start: 1.2rem;
+    padding-block-start: 1rem;
+  }
+
+  .colaboradores-list {
+    width: 100vw;
+    margin-left: -50vw;
+    left: 50%;
+    position: relative;
+    background-color: #ffffff;
+    padding: 3rem 3rem;
+    padding-bottom: 0;
+    text-align: center;
+  }
+
+  .colaboradores-title {
+    font-size: 2rem;
+    color: #002f6c;
+    margin-bottom: 2.5rem;
+    margin-top: 0px;
+  }
+
+  .colaboradores-publicos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    justify-items: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+  }
+
+  .colaborador img {
+    max-width: 120px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  @media (max-width: 768px) {
+    .colaboradores-publicos {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .colaboradores-publicos {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+
+  /* === Formulario colaboradores === */
+
+
+
+  .colaborador-form.contextual-region.block.block-cafd-colabs.block-colaborador-form-block {
+    width: 100vw;
+    margin-left: -50vw;
+    margin-block-end: -54px;
+    left: 50%;
+    position: relative;
+    box-sizing: border-box;
+    padding: 3rem 2rem;
+    background-color: rgb(251, 248, 244);
+
+  }
+
+  .colaboradores-form-title {
+    margin: 0rem;
+  }
+
+  .colabs-formulario-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 1.5rem;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .colabs-formulario-wrapper .colabs-formulario {
+    grid-column: 1;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+
+
+  .colabs-formulario-wrapper .colaboradores-list {
+    grid-column: 2;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  @media screen and (max-width: 1000px) {
+    .colabs-formulario-wrapper {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .colabs-formulario-wrapper .colabs-formulario,
+    .colabs-formulario-wrapper .colaboradores-list {
+      grid-column: 1;
+      max-width: 100%;
+    }
+  }
+
+  /* === Redes Sociales === */
+
+  .bloque-redes-sociales {
+    background-color: #eaf6ff;
+    padding: 3rem 2rem;
+    text-align: center;
+    width: 100vw;
+    margin-left: -50vw;
+    left: 50%;
+    position: relative;
+  }
+
+  .bloque-redes-sociales h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #002f6c;
+  }
+
+  .redes-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .red-social {
+    flex: 1 1 300px;
+    max-width: 340px;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 500px;
+
+  }
+
+  .red-social h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    color: #002f6c;
+  }
+
+  .feed-contenido {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-start;  /* Cambiado de center a flex-start */
+    justify-content: center;
+  }
+
+  .instagram .feed-contenido {
+    min-height: 450px;
+    overflow: hidden;
+    padding-top: 0;  /* Asegura que no haya espacio extra arriba */
+  }
+
+  .instagram-media {
+    max-width: 100% !important;
+    min-width: 280px !important;
+    width: 100% !important;
+    min-height: 450px !important;
+    margin-top: 0 !important;  /* Elimina cualquier margen superior */
+  }
+
+  .instagram .feed-contenido iframe {
+    margin-top: 0;
+    display: block;
+  }
+
+
+/* === footer === */
+  .footer__container {
+
+  padding-top: 3rem;
+
+  }
+
+
+
+
+
+
+
+

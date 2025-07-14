@@ -1,0 +1,55 @@
+{% if not cookies_accepted %}
+<div id="cookie-overlay" class="cookie-overlay"></div>
+<div id="cookie-popup" class="cookie-popup">
+    <h2>Gestionar el consentimiento de las cookies</h2>
+    <p>Para ofrecer las mejores experiencias, utilizamos tecnologías como las cookies para almacenar y/o acceder a la información del dispositivo.</p>
+    
+    <div class="buttons">
+        <button id="accept-cookies" class="accept">Aceptar</button>
+        <button id="reject-cookies" class="deny">Rechazar</button>
+        <button id="preferences-cookies" class="preferences">Ver Preferencias</button>
+    </div>
+    
+    <div id="cookie-preferences" class="cookie-preferences" style="display: none;">
+        <h3>Preferencias de Cookies</h3>
+
+        <details>
+            <summary>Funcional
+                <input type="checkbox" id="cookies-funcionales" checked>
+                <span class="always-active">Siempre activas</span>
+            </summary>
+            <p>El almacenamiento o acceso técnico es estrictamente necesario para el propósito legítimo de permitir el uso de un servicio específico explícitamente solicitado por el abonado o usuario.</p>
+        </details>
+
+        <details>
+            <summary>Preferencias
+                <label class="toggle-switch">
+                    <input type="checkbox" id="cookies-preferencias">
+                    <span class="slider"></span>
+                </label>
+            </summary>
+            <p>El almacenamiento o acceso técnico es necesario para la finalidad legítima de almacenar preferencias no solicitadas por el abonado o usuario.</p>
+        </details>
+
+        <details>
+            <summary>Marketing
+                <label class="toggle-switch">
+                    <input type="checkbox" id="cookies-marketing">
+                    <span class="slider"></span>
+                </label>
+            </summary>
+            <p>El almacenamiento o acceso técnico es necesario para crear perfiles de usuario para enviar publicidad, o para rastrear al usuario en varias webs con fines de marketing similares.</p>
+        </details>
+        
+        <button id="save-preferences" class="save">Guardar preferencias</button>
+        
+        <p id="mensaje-confirmacion" class="mensaje-confirmacion" style="display: none; color: green;">
+            Tus preferencias se han guardado correctamente.
+        </p>
+    </div>
+
+    <div class="links">
+        <a href="/politica-privacidad" id="enlace-politica">Política de Privacidad y Cookies</a>
+    </div>
+</div>
+{% endif %}

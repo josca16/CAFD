@@ -1,0 +1,33 @@
+.junta-swiper {
+  max-width: 500px;
+  margin: auto;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.slide-miembro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imagen-miembro {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  margin-bottom: 1rem;
+}
+
+.nombre-miembro {
+  font-size: 1.4rem;
+  color: #f9c00c;
+  font-weight: bold;
+  margin: 0.5rem 0 0.2rem;
+}
+
+.cargo-miembro {
+  font-size: 1rem;
+  color: #444;
+}

@@ -1,0 +1,33 @@
+# Rutas originales
+cafd_federaciones.form:
+  path: '/federaciones/nueva'
+  defaults:
+    _form: '\Drupal\cafd_federaciones\Form\FederacionForm'
+    _title: 'Nueva Federación'
+  requirements:
+    _permission: 'administer site configuration'
+
+cafd_federaciones.list:
+  path: '/federaciones'
+  defaults:
+    _controller: '\Drupal\cafd_federaciones\Controller\FederacionController::list'
+    _title: 'Listado de Federaciones'
+  requirements:
+    _permission: 'access content'
+
+# Nuevas rutas para editar y eliminar
+cafd_federaciones.edit:
+  path: '/federaciones/editar/{id}'
+  defaults:
+    _controller: '\Drupal\cafd_federaciones\Controller\FederacionController::edit'
+    _title: 'Editar Federación'
+  requirements:
+    _permission: 'administer site configuration'
+
+cafd_federaciones.delete:
+  path: '/federaciones/eliminar/{id}'
+  defaults:
+    _controller: '\Drupal\cafd_federaciones\Controller\FederacionController::delete'
+    _title: 'Eliminar Federación'
+  requirements:
+    _permission: 'administer site configuration'

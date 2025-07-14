@@ -1,0 +1,7 @@
+navbar:
+  version: 1.0
+  css:
+    theme:
+      css/navbar.css: {}
+  js:
+    js/navbar.js: {}

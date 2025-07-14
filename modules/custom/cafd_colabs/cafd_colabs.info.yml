@@ -1,0 +1,9 @@
+name: 'Colaboradores'
+type: module
+description: 'Contenido personalizado de colaboradores CAFD.'
+core_version_requirement: ^9 || ^10
+package: Custom
+dependencies: []
+templates:
+  - templates/colaboradores-list.html.twig
+

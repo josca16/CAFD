@@ -1,0 +1,5 @@
+name: CAFD UI
+description: 'Modulo de interfaz grafica.'
+type: module
+core_version_requirement: ^10
+package: Custom

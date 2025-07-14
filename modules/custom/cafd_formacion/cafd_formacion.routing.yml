@@ -1,0 +1,7 @@
+cafd_formacion.page:
+  path: '/formacion'
+  defaults:
+    _controller: '\Drupal\cafd_formacion\Controller\CafdFormacionController::page'
+    _title: 'Formación'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,5 @@
+name: 'CAFD Blocks pagina de inicio'
+type: module
+description: 'Bloques de la página de inicio de CAFD como plugins.'
+core_version_requirement: ^10
+package: Custom
